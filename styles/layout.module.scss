@@ -6,10 +6,17 @@
   position: relative;
   padding-bottom: $footerheight;
 
+  .drawerBtn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 1;
+    color: white;
+  }
+
   .footer {
     position: absolute;
     width: 100%;
-    font-size: 1.25rem;
     font-weight: 300;
     letter-spacing: 2px;
     height: $footerheight;
@@ -18,4 +25,13 @@
     align-items: center;
     background-color: white;
   }
+}
+.icon {
+  justify-content: center !important;
+}
+.listItem_selected {
+  color: #afa0ff !important;
+  // color: transparent !important;
+  // background: linear-gradient(90deg, #311ba6, #c87614);
+  // background-clip: text;
 }
