@@ -1,0 +1,65 @@
+@import './variables.scss';
+.wrapper {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  color: white;
+  background: #323232;
+
+  .title {
+    margin-top: 50px;
+    width: 100%;
+    font-weight: 300;
+  }
+
+  .gradients {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 230px);
+    justify-content: space-between;
+    grid-gap: 20px;
+  }
+
+  .card {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    margin: 0 15px 15px 15px;
+    overflow: hidden;
+    background-color: #1e1e1e;
+
+    .gradient {
+      position: relative;
+      flex-grow: 1;
+
+      .cross {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    }
+
+    .cardBottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: auto;
+      height: 45px;
+      border-radius: 0 0 25px 25px;
+
+
+      &:hover {
+        .copyCaption {
+          margin-bottom: 3px
+        }
+      }
+      .copyCaption {
+        cursor: pointer;
+      }
+    }
+  }
+}

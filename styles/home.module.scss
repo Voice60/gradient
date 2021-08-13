@@ -27,6 +27,7 @@
     width: 320px;
     text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #18bb895e;
@@ -38,6 +39,7 @@
       color: white;
       background: linear-gradient(90deg, #f598a8, #f6edb2, #f598a8);
       background-clip: text;
+      margin-bottom: 8px;
     }
 
     .navLink_animation {

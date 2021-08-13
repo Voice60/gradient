@@ -5,13 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c26e462-9c19-4683-b373-91a47b0a47f3" name="Changes" comment="reworked gradient page">
+      <change afterPath="$PROJECT_DIR$/styles/favorites.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utiles/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/gradient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/favorites.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/generate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/generate.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/generate.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/generate.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/home.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/layout.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/layout.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,9 +59,15 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.splitter.proportion" value="0.20795107" />
     <property name="ts.external.directory.path" value="D:\reactApp\gradient\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\reactApp\gradient\Types" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -73,7 +96,8 @@
       <updated>1628812883984</updated>
       <workItem from="1628812885595" duration="3721000" />
       <workItem from="1628816678078" duration="1223000" />
-      <workItem from="1628818366836" duration="304000" />
+      <workItem from="1628818366836" duration="2514000" />
+      <workItem from="1628820919738" duration="13778000" />
     </task>
     <task id="LOCAL-00001" summary="reworked gradient page">
       <created>1628814339616</created>

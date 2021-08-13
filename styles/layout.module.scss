@@ -4,7 +4,8 @@
   height: 100%;
   overflow-y: auto;
   position: relative;
-  padding-bottom: $footerheight;
+  display: flex;
+  flex-direction: column;
 
   .drawerBtn {
     position: absolute;
@@ -14,8 +15,12 @@
     color: white;
   }
 
+  .content {
+    flex: 1 0 auto;
+  }
+
+
   .footer {
-    position: absolute;
     width: 100%;
     font-weight: 300;
     letter-spacing: 2px;
@@ -24,11 +29,14 @@
     justify-content: center;
     align-items: center;
     background-color: white;
+    flex: 0 0 auto;
   }
 }
+
 .icon {
   justify-content: center !important;
 }
+
 .listItem_selected {
   color: #afa0ff !important;
   // color: transparent !important;
