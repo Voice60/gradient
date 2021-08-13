@@ -33,13 +33,18 @@
   }
 }
 
-.icon {
-  justify-content: center !important;
-}
+.drawer {
+  min-width: 230px;
 
-.listItem_selected {
-  color: #afa0ff !important;
-  // color: transparent !important;
-  // background: linear-gradient(90deg, #311ba6, #c87614);
-  // background-clip: text;
+  .icon {
+    justify-content: center !important;
+  }
+
+  .listItem_selected {
+    color: #afa0ff !important;
+  }
+
+  .drawerText {
+    font-weight: 300;
+  }
 }

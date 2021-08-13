@@ -1,4 +1,4 @@
-import {Drawer} from '@material-ui/core'
+import {Drawer, Typography} from '@material-ui/core'
 import type {NextPage} from 'next'
 import {useState} from 'react'
 import styles from '../styles/layout.module.scss'
@@ -27,7 +27,10 @@ const Layout: NextPage = ({children}) => {
                   color="inherit" aria-label="menu">
         <MenuIcon/>
       </IconButton>}
-      <Drawer anchor='left' open={isDrawerOpen} onClose={hideDrawer}>
+      <Drawer variant='temporary'
+              classes={{
+                paper: styles.drawer
+              }} anchor='left' open={isDrawerOpen} onClose={hideDrawer}>
         <List>
           <ListItem button
                     onClick={() => router.push('/')}
@@ -40,15 +43,20 @@ const Layout: NextPage = ({children}) => {
             </ListItemIcon>
           </ListItem>
           <Divider/>
+
           <ListItem className={router.pathname === '/generate' ? styles.listItem_selected : ''}
                     button
                     onClick={() => router.push('/generate')}>
-            <ListItemText primary='Generate gradient'/>
+            <Typography className={styles.drawerText} variant='h6'>
+              Generate gradient
+            </Typography>
           </ListItem>
           <ListItem className={router.pathname === '/favorites' ? styles.listItem_selected : ''}
                     button
                     onClick={() => router.push('/favorites')}>
-            <ListItemText primary='Favorites'/>
+            <Typography className={styles.drawerText} variant='h6'>
+              Favorites
+            </Typography>
           </ListItem>
         </List>
       </Drawer>

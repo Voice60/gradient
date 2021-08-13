@@ -10,11 +10,11 @@ import CachedIcon from '@material-ui/icons/Cached';
 import {ButtonGroup, Typography} from '@material-ui/core'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-import {gradientsType} from "../types";
+import {gradient, gradientsType} from "../types";
 import {getGradientProperty} from "../utiles";
 
 const Generate: NextPage = () => {
-  const [gradient, setGradient] = useState<string[]>([])
+  const [gradient, setGradient] = useState<gradient>([])
   const [isCopied, setIsCopied] = useState<boolean>(false)
   const [isSaved, setIsSaved] = useState<boolean>(false)
   type hexLetter = string | number
@@ -34,11 +34,19 @@ const Generate: NextPage = () => {
   }
 
   const saveGradient = (): void => {
-    if (!isSaved && gradient[0]) {
-      let gradients: gradientsType = JSON.parse(localStorage.gradients ? localStorage.gradients : '[]')
-      localStorage.setItem('gradients', `${gradients.push(gradient) && JSON.stringify(gradients)}`)
+    if (gradient.length) {
+      const gradients: gradientsType = JSON.parse(localStorage.gradients ? localStorage.gradients : '[]')
+      gradients.unshift(gradient)
+      localStorage.setItem('gradients', JSON.stringify(gradients))
       setIsSaved(true)
     }
+  }
+
+  const deleteGradient = (): void => {
+    const gradients: gradientsType = JSON.parse(localStorage.gradients ? localStorage.gradients : '[]')
+    gradients.shift()
+    localStorage.setItem('gradients', JSON.stringify(gradients))
+    setIsSaved(false)
   }
 
   const copyGradient = (): void => {
@@ -51,7 +59,6 @@ const Generate: NextPage = () => {
     setIsSaved(false)
     let newGradient: string[] = []
     for (let i = 0; i < 2; i++) {
-
       let grd: string = ''
       for (let k = 0; k < 6; k++) {
         grd += generateLetter()
@@ -75,8 +82,8 @@ const Generate: NextPage = () => {
         <h2 className={`${styles.message} ${isCopied ? styles.message_active : ''}`}>Gradient copied!</h2>
         <h2 style={{visibility: gradient[0] ? 'visible' : 'hidden'}} onClick={copyGradient}
             className={styles.gradientProperty}>
-          {'background: ' + getGradientProperty(gradient) + ' '} <Image width={16} height={16} src="/copyIcon.svg"
-                                                                        alt="copyIcon"/>
+          {'background: ' + getGradientProperty(gradient) + ' '}
+          <Image width={16} height={16} src="/copyIcon.svg" alt="copyIcon"/>
         </h2>
         <ThemeProvider theme={theme}>
           <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
@@ -84,12 +91,16 @@ const Generate: NextPage = () => {
               <CachedIcon/>
               &nbsp;generate
             </Button>
-            <Button onClick={saveGradient}>
-              {isSaved
-                ? <BookmarkIcon/>
-                : <BookmarkBorderIcon/>}
-              &nbsp;save
-            </Button>
+            {isSaved
+              ? <Button onClick={deleteGradient}>
+                <BookmarkIcon/>
+                &nbsp;delete
+              </Button>
+              : <Button onClick={saveGradient}>
+                <BookmarkBorderIcon/>
+                &nbsp;save
+              </Button>
+            }
           </ButtonGroup>
         </ThemeProvider>
       </div>

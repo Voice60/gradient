@@ -1,4 +1,5 @@
 @import './variables.scss';
+
 .wrapper {
   min-height: 100%;
   width: 100%;
@@ -16,9 +17,10 @@
 
   .gradients {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 230px);
+    grid-template-columns: repeat(auto-fill, 200px);
     justify-content: space-between;
     grid-gap: 20px;
+    margin: 0 20px;
   }
 
   .card {
@@ -27,13 +29,17 @@
     display: flex;
     flex-direction: column;
     border-radius: 25px;
-    margin: 0 15px 15px 15px;
+    margin-bottom: 15px;
     overflow: hidden;
     background-color: #1e1e1e;
 
     .gradient {
       position: relative;
       flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
       .cross {
         position: absolute;
@@ -50,15 +56,12 @@
       margin-top: auto;
       height: 45px;
       border-radius: 0 0 25px 25px;
-
+      cursor: pointer;
 
       &:hover {
         .copyCaption {
           margin-bottom: 3px
         }
-      }
-      .copyCaption {
-        cursor: pointer;
       }
     }
   }

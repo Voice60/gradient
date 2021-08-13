@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Layout from '../components/layout'
 import styles from '../styles/favorites.module.scss'
-import {useEffect, useState} from 'react'
+import {Fragment, useEffect, useState} from 'react'
 import {Typography} from '@material-ui/core'
 import {gradientsType} from "../types";
 import {getGradientProperty} from "../utiles";
@@ -46,6 +46,17 @@ const Generate: NextPage = () => {
                    key={index}>
                 <div style={{background: getGradientProperty(grd)}}
                      className={styles.gradient}>
+                  {grd.map((grdColor, index) => (
+                    <Fragment key={index}>
+                      <Typography className={styles.copyText} variant="subtitle1">
+                        {`#${grdColor}`}
+                      </Typography>
+                      <Typography className={styles.copyText} variant="subtitle1">
+                        {`${grd.length - 1 !== index ? '>' : ''}`}
+                      </Typography>
+                    </Fragment>
+                  ))}
+
                   <CloseIcon onClick={() => deleteGradient(index)} className={styles.cross}/>
                 </div>
                 <div className={styles.cardBottom} onClick={() => copyGradient(grd)}>
