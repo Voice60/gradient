@@ -1,0 +1,21 @@
+@import 'variables.scss';
+
+.container {
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  padding-bottom: $footerheight;
+
+  .footer {
+    position: absolute;
+    width: 100%;
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    height: $footerheight;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  }
+}

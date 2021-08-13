@@ -1,0 +1,57 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(149deg, rgba(24, 187, 156, 1) 0%, rgba(106, 57, 175, 1) 42%, rgba(187, 24, 148, 1) 72%, rgba(115, 53, 134, 1) 100%);
+  animation: gradient 10s infinite linear;
+  background-size: 400%;
+
+  @keyframes gradient {
+    0% {
+      background-position: 80% 0%;
+    }
+
+    50% {
+      background-position: 20% 100%;
+    }
+
+    100% {
+      background-position: 80% 0%;
+    }
+  }
+
+  .nav {
+    height: 100%;
+    width: 320px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #18bb895e;
+    box-shadow: black 0 0 40px 2px;
+
+    .navLink {
+      font-size: 1.75rem;
+      transition: linear .3s;
+      color: white;
+      background: linear-gradient(90deg, #f598a8, #f6edb2, #f598a8);
+      background-clip: text;
+    }
+
+    .navLink_animation {
+      color: transparent;
+      animation: gradientSpin 5s infinite linear;
+    }
+
+    @keyframes gradientSpin {
+      0% {
+        background-position: -30vw 0
+      }
+      100% {
+        background-position: 70vw 0
+      }
+    }
+  }
+}
