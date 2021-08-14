@@ -5,9 +5,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
   position: relative;
   color: white;
+  padding: 0 15px;
+  background: #323232;
 
   .gradient {
     position: absolute;
@@ -24,6 +25,9 @@
     color: rgb(21, 245, 21);
     transition: 0s ease-in;
     opacity: 0;
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 
   .message_active {
@@ -36,11 +40,15 @@
     z-index: 1;
     font-weight: 300;
     color: white;
-    cursor: pointer;
 
-    &:hover {
-      position: relative;
-      bottom: 2px
+    @media (max-width: 768px) {
+      font-size: 1.125rem;
+    }
+  }
+  
+  .btnText {
+    @media (max-width: 480px) {
+      display: none;
     }
   }
 }

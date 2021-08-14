@@ -11,16 +11,23 @@ import CloseIcon from '@material-ui/icons/Close';
 
 const Generate: NextPage = () => {
   const [gradients, setGradients] = useState<gradientsType>([]);
+  const [hover, setHover] = useState<number | null>(null)
   useEffect(() => {
     if (window) {
       setGradients(localStorage.gradients ? JSON.parse(localStorage.gradients) : [])
-
     }
-  }, []);
+  }, [])
+
+  const onMouseEnter = (index: number): void => {
+    setHover(index)
+  }
+
+  const onMouseLeave = (): void => {
+    setHover(null)
+  }
 
   const copyGradient = (gradient: string[]): void => {
     navigator.clipboard.writeText('background: ' + getGradientProperty(gradient))
-    // setIsCopied(true)
   }
 
   const deleteGradient = (index: number): void => {
@@ -28,7 +35,6 @@ const Generate: NextPage = () => {
     newGradients.splice(index, 1)
     localStorage.setItem('gradients', JSON.stringify(newGradients))
     setGradients(newGradients)
-    // setIsCopied(true)
   }
   return (
     <Layout>
@@ -44,8 +50,18 @@ const Generate: NextPage = () => {
             {gradients.map((grd, index) => (
               <div className={styles.card}
                    key={index}>
-                <div style={{background: getGradientProperty(grd)}}
-                     className={styles.gradient}>
+                <div onMouseEnter={() => {
+                  onMouseEnter(index)
+                }}
+                     onMouseLeave={onMouseLeave}
+                     className={styles.cardTop}>
+                  <CloseIcon onClick={() => deleteGradient(index)} className={styles.cross}/>
+                  <div style={
+                    {
+                      background: getGradientProperty(grd)
+                    }}
+                       className={styles.gradient}>
+                  </div>
                   {grd.map((grdColor, index) => (
                     <Fragment key={index}>
                       <Typography className={styles.copyText} variant="subtitle1">
@@ -56,8 +72,6 @@ const Generate: NextPage = () => {
                       </Typography>
                     </Fragment>
                   ))}
-
-                  <CloseIcon onClick={() => deleteGradient(index)} className={styles.cross}/>
                 </div>
                 <div className={styles.cardBottom} onClick={() => copyGradient(grd)}>
                   <div className={styles.copyCaption}>

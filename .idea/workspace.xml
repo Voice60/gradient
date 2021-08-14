@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c26e462-9c19-4683-b373-91a47b0a47f3" name="Changes" comment="reworked gradient page">
+    <list default="true" id="0c26e462-9c19-4683-b373-91a47b0a47f3" name="Changes" comment="added favorites list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/favorites.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/favorites.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/generate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/generate.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/favorites.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/favorites.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/layout.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/layout.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/generate.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/generate.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utiles/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utiles/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +92,7 @@
       <workItem from="1628816678078" duration="1223000" />
       <workItem from="1628818366836" duration="2514000" />
       <workItem from="1628820919738" duration="13778000" />
-      <workItem from="1628865464064" duration="7188000" />
+      <workItem from="1628865464064" duration="23997000" />
     </task>
     <task id="LOCAL-00001" summary="reworked gradient page">
       <created>1628814339616</created>
@@ -104,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628814339616</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added favorites list">
+      <created>1628877387703</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628877387703</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,7 +128,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="reworked gradient page" />
-    <option name="LAST_COMMIT_MESSAGE" value="reworked gradient page" />
+    <MESSAGE value="added favorites list" />
+    <option name="LAST_COMMIT_MESSAGE" value="added favorites list" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

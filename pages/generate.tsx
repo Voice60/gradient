@@ -75,16 +75,21 @@ const Generate: NextPage = () => {
       </Head>
       <div className={styles.wrapper}>
         <div className={styles.gradient}
-             style={{background: gradient[0] ? getGradientProperty(gradient) : 'black'}}></div>
-        <Typography className='title' variant="h3" gutterBottom>
+             style={{background: gradient[0] ? getGradientProperty(gradient) : '#323232;'}}></div>
+        <Typography align='center' className='title' variant="h3" gutterBottom>
           Generate Your Gradient
         </Typography>
-        <h2 className={`${styles.message} ${isCopied ? styles.message_active : ''}`}>Gradient copied!</h2>
-        <h2 style={{visibility: gradient[0] ? 'visible' : 'hidden'}} onClick={copyGradient}
-            className={styles.gradientProperty}>
-          {'background: ' + getGradientProperty(gradient) + ' '}
-          <Image width={16} height={16} src="/copyIcon.svg" alt="copyIcon"/>
-        </h2>
+        <Typography variant='h6' className={`${styles.message} ${isCopied ? styles.message_active : ''}`}>
+          Gradient copied!
+        </Typography>
+        <Typography style={{visibility: gradient[0] ? 'visible' : 'hidden'}}
+                    className={styles.gradientProperty}
+                    onClick={copyGradient}
+                    align='center'
+                    variant='h5'
+                    gutterBottom>
+          {'background: '}&shy;{getGradientProperty(gradient)}
+        </Typography>
         <ThemeProvider theme={theme}>
           <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
             <Button size="large" onClick={generateGradient} variant="contained" color="primary">
@@ -94,13 +99,16 @@ const Generate: NextPage = () => {
             {isSaved
               ? <Button onClick={deleteGradient}>
                 <BookmarkIcon/>
-                &nbsp;delete
+                <Typography className={styles.btnText} variant='button'>&nbsp;delete</Typography>
               </Button>
               : <Button onClick={saveGradient}>
                 <BookmarkBorderIcon/>
-                &nbsp;save
-              </Button>
-            }
+                <Typography className={styles.btnText} variant='button'>&nbsp;save</Typography>
+              </Button>}
+            <Button size="large" onClick={copyGradient} variant="contained" color="primary">
+              <Image width={20} height={20} src="/copyIcon.svg" alt="copyIcon"/>
+              <Typography className={styles.btnText} variant='button'>&nbsp;copy</Typography>
+            </Button>
           </ButtonGroup>
         </ThemeProvider>
       </div>
