@@ -1,2 +1,2 @@
-export type gradient = string[]
-export type gradientsType = gradient[]
+export type Gradient = string[]
+export type GradientsType = Gradient[]

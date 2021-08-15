@@ -6,11 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="0c26e462-9c19-4683-b373-91a47b0a47f3" name="Changes" comment="added favorites list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/favorites.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/favorites.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/generate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/generate.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/favorites.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/favorites.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/generate.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/generate.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utiles/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utiles/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/layout.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/layout.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +61,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.TypeScript" />
     <property name="settings.editor.splitter.proportion" value="0.20795107" />
     <property name="ts.external.directory.path" value="D:\reactApp\gradient\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -93,6 +101,7 @@
       <workItem from="1628818366836" duration="2514000" />
       <workItem from="1628820919738" duration="13778000" />
       <workItem from="1628865464064" duration="23997000" />
+      <workItem from="1628962657108" duration="14404000" />
     </task>
     <task id="LOCAL-00001" summary="reworked gradient page">
       <created>1628814339616</created>

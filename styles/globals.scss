@@ -1,14 +1,21 @@
+@import "variables";
+
 html,
 body {
   padding: 0;
   margin: 0;
   /* font-family: 'Roboto', sans-serif; */
   height: 100%;
+  background-color: $dark800;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+*::selection {
+  background: $dark1000;
 }
 
 * {
@@ -19,10 +26,4 @@ a {
 
 #__next {
   height: 100%;
-}
-
-.title {
-  position: absolute;
-  top: 50px;
-  font-weight: 300!important;
 }

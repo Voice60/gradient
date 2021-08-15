@@ -10,11 +10,12 @@ import CachedIcon from '@material-ui/icons/Cached';
 import {ButtonGroup, Typography} from '@material-ui/core'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-import {gradient, gradientsType} from "../types";
+import {Gradient, GradientsType} from "../types";
 import {getGradientProperty} from "../utiles";
+import cn from 'classnames';
 
 const Generate: NextPage = () => {
-  const [gradient, setGradient] = useState<gradient>([])
+  const [gradient, setGradient] = useState<Gradient>([])
   const [isCopied, setIsCopied] = useState<boolean>(false)
   const [isSaved, setIsSaved] = useState<boolean>(false)
   type hexLetter = string | number
@@ -35,7 +36,7 @@ const Generate: NextPage = () => {
 
   const saveGradient = (): void => {
     if (gradient.length) {
-      const gradients: gradientsType = JSON.parse(localStorage.gradients ? localStorage.gradients : '[]')
+      const gradients: GradientsType = JSON.parse(localStorage.gradients ? localStorage.gradients : '[]')
       gradients.unshift(gradient)
       localStorage.setItem('gradients', JSON.stringify(gradients))
       setIsSaved(true)
@@ -43,7 +44,7 @@ const Generate: NextPage = () => {
   }
 
   const deleteGradient = (): void => {
-    const gradients: gradientsType = JSON.parse(localStorage.gradients ? localStorage.gradients : '[]')
+    const gradients: GradientsType = JSON.parse(localStorage.gradients ? localStorage.gradients : '[]')
     gradients.shift()
     localStorage.setItem('gradients', JSON.stringify(gradients))
     setIsSaved(false)
@@ -57,7 +58,7 @@ const Generate: NextPage = () => {
   const generateGradient = (): void => {
     setIsCopied(false)
     setIsSaved(false)
-    let newGradient: string[] = []
+    let newGradient: Gradient = []
     for (let i = 0; i < 2; i++) {
       let grd: string = ''
       for (let k = 0; k < 6; k++) {
@@ -75,20 +76,19 @@ const Generate: NextPage = () => {
       </Head>
       <div className={styles.wrapper}>
         <div className={styles.gradient}
-             style={{background: gradient[0] ? getGradientProperty(gradient) : '#323232;'}}></div>
-        <Typography align='center' className='title' variant="h3" gutterBottom>
+             style={{background: gradient.length ? getGradientProperty(gradient) : '#323232;'}}></div>
+        <Typography align='center' className={styles.title} variant="h3" gutterBottom>
           Generate Your Gradient
         </Typography>
-        <Typography variant='h6' className={`${styles.message} ${isCopied ? styles.message_active : ''}`}>
+        <Typography variant='h6' className={cn(styles.message, {[styles.message_active]: isCopied})}>
           Gradient copied!
         </Typography>
-        <Typography style={{visibility: gradient[0] ? 'visible' : 'hidden'}}
+        <Typography style={{visibility: gradient.length ? 'visible' : 'hidden'}}
                     className={styles.gradientProperty}
-                    onClick={copyGradient}
                     align='center'
                     variant='h5'
                     gutterBottom>
-          {'background: '}&shy;{getGradientProperty(gradient)}
+          {`background: ${getGradientProperty(gradient)}`}
         </Typography>
         <ThemeProvider theme={theme}>
           <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">

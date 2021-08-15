@@ -1,6 +1,6 @@
 import {Drawer, Typography} from '@material-ui/core'
 import type {NextPage} from 'next'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import styles from '../styles/layout.module.scss'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -11,16 +11,27 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Image from 'next/image';
+import cn from 'classnames';
 
 const Layout: NextPage = ({children}) => {
   const router = useRouter()
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
 
+  const checkPC = () => {
+    if (process.browser) {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return false
+      }
+    }
+    return true
+  }
+
   const hideDrawer = (): void => setIsDrawerOpen(false)
   const showDrawer = (): void => setIsDrawerOpen(true)
 
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container,
+      {[styles.container_pc]: checkPC()})}>
       {router.pathname !== '/' &&
       <IconButton onClick={showDrawer} size='medium'
                   edge="start" className={styles.drawerBtn}
@@ -44,17 +55,19 @@ const Layout: NextPage = ({children}) => {
           </ListItem>
           <Divider/>
 
-          <ListItem className={router.pathname === '/generate' ? styles.listItem_selected : ''}
-                    button
+          <ListItem button
                     onClick={() => router.push('/generate')}>
-            <Typography className={styles.drawerText} variant='h6'>
+            <Typography className={cn(styles.drawerText,
+              {[styles.listItem_selected]: router.pathname === '/generate'})}
+                        variant='h6'>
               Generate gradient
             </Typography>
           </ListItem>
-          <ListItem className={router.pathname === '/favorites' ? styles.listItem_selected : ''}
-                    button
+          <ListItem button
                     onClick={() => router.push('/favorites')}>
-            <Typography className={styles.drawerText} variant='h6'>
+            <Typography className={cn(styles.drawerText,
+              {[styles.listItem_selected]: router.pathname === '/favorites'})}
+                        variant='h6'>
               Favorites
             </Typography>
           </ListItem>

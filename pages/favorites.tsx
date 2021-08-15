@@ -5,26 +5,18 @@ import Layout from '../components/layout'
 import styles from '../styles/favorites.module.scss'
 import {Fragment, useEffect, useState} from 'react'
 import {Typography} from '@material-ui/core'
-import {gradientsType} from "../types";
+import {GradientsType} from "../types";
 import {getGradientProperty} from "../utiles";
 import CloseIcon from '@material-ui/icons/Close';
 
 const Generate: NextPage = () => {
-  const [gradients, setGradients] = useState<gradientsType>([]);
+  const [gradients, setGradients] = useState<GradientsType>([]);
   const [hover, setHover] = useState<number | null>(null)
   useEffect(() => {
     if (window) {
       setGradients(localStorage.gradients ? JSON.parse(localStorage.gradients) : [])
     }
   }, [])
-
-  const onMouseEnter = (index: number): void => {
-    setHover(index)
-  }
-
-  const onMouseLeave = (): void => {
-    setHover(null)
-  }
 
   const copyGradient = (gradient: string[]): void => {
     navigator.clipboard.writeText('background: ' + getGradientProperty(gradient))
@@ -50,11 +42,7 @@ const Generate: NextPage = () => {
             {gradients.map((grd, index) => (
               <div className={styles.card}
                    key={index}>
-                <div onMouseEnter={() => {
-                  onMouseEnter(index)
-                }}
-                     onMouseLeave={onMouseLeave}
-                     className={styles.cardTop}>
+                <div className={styles.cardTop}>
                   <CloseIcon onClick={() => deleteGradient(index)} className={styles.cross}/>
                   <div style={
                     {
@@ -75,7 +63,7 @@ const Generate: NextPage = () => {
                 </div>
                 <div className={styles.cardBottom} onClick={() => copyGradient(grd)}>
                   <div className={styles.copyCaption}>
-                    <Typography className={styles.copyText} variant="subtitle1">
+                    <Typography variant="subtitle1">
                       <Image width={16} height={16} src="/copyIcon.svg" alt="copyIcon"/>&nbsp;Copy
                     </Typography>
                   </div>
