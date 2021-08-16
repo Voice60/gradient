@@ -1,6 +1,6 @@
-import {Drawer, Typography} from '@material-ui/core'
+import {Box, Drawer, Typography} from '@material-ui/core'
 import type {NextPage} from 'next'
-import {useEffect, useState} from 'react'
+import React, {memo, useEffect, useState} from 'react'
 import styles from '../styles/layout.module.scss'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -41,7 +41,8 @@ const Layout: NextPage = ({children}) => {
       <Drawer variant='temporary'
               classes={{
                 paper: styles.drawer
-              }} anchor='left' open={isDrawerOpen} onClose={hideDrawer}>
+              }}
+              anchor='left' open={isDrawerOpen} onClose={hideDrawer}>
         <List>
           <ListItem button
                     onClick={() => router.push('/')}
@@ -57,28 +58,30 @@ const Layout: NextPage = ({children}) => {
 
           <ListItem button
                     onClick={() => router.push('/generate')}>
-            <Typography className={cn(styles.drawerText,
-              {[styles.listItem_selected]: router.pathname === '/generate'})}
+            <Typography className={cn({[styles.listItem_selected]: router.pathname === '/generate'})}
                         variant='h6'>
               Generate gradient
             </Typography>
           </ListItem>
           <ListItem button
                     onClick={() => router.push('/favorites')}>
-            <Typography className={cn(styles.drawerText,
-              {[styles.listItem_selected]: router.pathname === '/favorites'})}
+            <Typography className={cn({[styles.listItem_selected]: router.pathname === '/favorites'})}
                         variant='h6'>
               Favorites
             </Typography>
           </ListItem>
         </List>
       </Drawer>
-      <div className={styles.content}>
+      <Box bgcolor={'background.paper'} className={styles.content}>
         {children}
-      </div>
-      <footer className={styles.footer}>
-        Created by Voice
-      </footer>
+      </Box>
+      <Box bgcolor={'background.default'}>
+        <footer className={styles.footer}>
+          <Typography className={styles.author} variant='h5'>
+            Created by Voice
+          </Typography>
+        </footer>
+      </Box>
     </div>
   )
 }

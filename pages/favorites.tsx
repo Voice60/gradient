@@ -1,13 +1,13 @@
 import type {NextPage} from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Layout from '../components/layout'
 import styles from '../styles/favorites.module.scss'
 import {Fragment, useEffect, useState} from 'react'
-import {Typography} from '@material-ui/core'
+import {Box, Typography} from '@material-ui/core'
 import {GradientsType} from "../types";
 import {getGradientProperty} from "../utiles";
 import CloseIcon from '@material-ui/icons/Close';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 
 const Generate: NextPage = () => {
   const [gradients, setGradients] = useState<GradientsType>([]);
@@ -40,7 +40,7 @@ const Generate: NextPage = () => {
         {gradients.length > 0
           ? <div className={styles.gradients}>
             {gradients.map((grd, index) => (
-              <div className={styles.card}
+              <Box bgcolor='background.default' className={styles.card}
                    key={index}>
                 <div className={styles.cardTop}>
                   <CloseIcon onClick={() => deleteGradient(index)} className={styles.cross}/>
@@ -62,13 +62,11 @@ const Generate: NextPage = () => {
                   ))}
                 </div>
                 <div className={styles.cardBottom} onClick={() => copyGradient(grd)}>
-                  <div className={styles.copyCaption}>
-                    <Typography variant="subtitle1">
-                      <Image width={16} height={16} src="/copyIcon.svg" alt="copyIcon"/>&nbsp;Copy
-                    </Typography>
-                  </div>
+                  <Typography className={styles.copyCaption} variant="subtitle1">
+                    <FileCopyIcon/>&nbsp;<p style={{margin: 0}}>Copy</p>
+                  </Typography>
                 </div>
-              </div>
+              </Box>
             ))}
           </div>
           : <Typography align='center' className={styles.title} variant="h5" gutterBottom>

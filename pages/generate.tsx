@@ -7,27 +7,19 @@ import {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles';
 import CachedIcon from '@material-ui/icons/Cached';
-import {ButtonGroup, Typography} from '@material-ui/core'
+import {Box, ButtonGroup, Typography} from '@material-ui/core'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import {Gradient, GradientsType} from "../types";
 import {getGradientProperty} from "../utiles";
 import cn from 'classnames';
+import FileCopyIcon from "@material-ui/icons/FileCopy";
 
 const Generate: NextPage = () => {
   const [gradient, setGradient] = useState<Gradient>([])
-  const [isCopied, setIsCopied] = useState<boolean>(false)
   const [isSaved, setIsSaved] = useState<boolean>(false)
   type hexLetter = string | number
   const hexArray: hexLetter[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
-
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#2196f3'
-      },
-    },
-  })
 
   const generateLetter = (): string => {
     const n = Math.floor(Math.random() * 16)
@@ -52,11 +44,9 @@ const Generate: NextPage = () => {
 
   const copyGradient = (): void => {
     navigator.clipboard.writeText('background: ' + getGradientProperty(gradient))
-    setIsCopied(true)
   }
 
   const generateGradient = (): void => {
-    setIsCopied(false)
     setIsSaved(false)
     let newGradient: Gradient = []
     for (let i = 0; i < 2; i++) {
@@ -76,12 +66,9 @@ const Generate: NextPage = () => {
       </Head>
       <div className={styles.wrapper}>
         <div className={styles.gradient}
-             style={{background: gradient.length ? getGradientProperty(gradient) : '#323232;'}}></div>
+             style={{background: gradient.length ? getGradientProperty(gradient) : 'transparent;'}}></div>
         <Typography align='center' className={styles.title} variant="h3" gutterBottom>
-          Generate Your Gradient
-        </Typography>
-        <Typography variant='h6' className={cn(styles.message, {[styles.message_active]: isCopied})}>
-          Gradient copied!
+          Generator
         </Typography>
         <Typography style={{visibility: gradient.length ? 'visible' : 'hidden'}}
                     className={styles.gradientProperty}
@@ -90,27 +77,25 @@ const Generate: NextPage = () => {
                     gutterBottom>
           {`background: ${getGradientProperty(gradient)}`}
         </Typography>
-        <ThemeProvider theme={theme}>
           <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
             <Button size="large" onClick={generateGradient} variant="contained" color="primary">
               <CachedIcon/>
               &nbsp;generate
             </Button>
             {isSaved
-              ? <Button onClick={deleteGradient}>
+              ? <Button disabled={gradient.length === 0} size="large" onClick={deleteGradient} variant="contained" color="primary">
                 <BookmarkIcon/>
                 <Typography className={styles.btnText} variant='button'>&nbsp;delete</Typography>
               </Button>
-              : <Button onClick={saveGradient}>
+              : <Button disabled={gradient.length === 0} size="large" onClick={saveGradient} variant="contained" color="primary">
                 <BookmarkBorderIcon/>
                 <Typography className={styles.btnText} variant='button'>&nbsp;save</Typography>
               </Button>}
-            <Button size="large" onClick={copyGradient} variant="contained" color="primary">
-              <Image width={20} height={20} src="/copyIcon.svg" alt="copyIcon"/>
+            <Button disabled={gradient.length === 0} size="large" onClick={copyGradient} variant="contained" color="primary">
+              <FileCopyIcon/>
               <Typography className={styles.btnText} variant='button'>&nbsp;copy</Typography>
             </Button>
           </ButtonGroup>
-        </ThemeProvider>
       </div>
     </Layout>
   )

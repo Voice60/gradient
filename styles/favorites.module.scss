@@ -6,8 +6,6 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  color: white;
-  background: #323232;
 
   .title {
     margin-top: 50px;
@@ -54,7 +52,6 @@
     flex-direction: column;
     border-radius: 25px;
     overflow: hidden;
-    background-color: #1e1e1e;
     position: relative;
     box-shadow: rgb(0 0 0 / 30%) 2px 3px 10px 4px;
 
@@ -113,6 +110,8 @@
       }
       .copyCaption {
         user-select: none;
+        display: flex;
+        align-items: center;
       }
     }
   }

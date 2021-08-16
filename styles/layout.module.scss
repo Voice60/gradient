@@ -9,13 +9,14 @@
 
   &_pc {
     &::-webkit-scrollbar {
-      width: 8px;
-      background-color: transparent;
+      width: 12px;
+      background-color: $dark800;
     }
 
     &::-webkit-scrollbar-thumb {
       background-color: $dark1000;
-      border-radius: 4px;
+      border-radius: 6px;
+      border: 2px solid $dark800;
     }
   }
 
@@ -24,7 +25,6 @@
     top: 10px;
     left: 20px;
     z-index: 1;
-    color: white;
   }
 
   .content {
@@ -40,23 +40,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
     flex: 0 0 auto;
+
+    .author {
+      &::selection {
+        background: white;
+        color: $dark1000;
+      }
+    }
   }
 }
 
 .drawer {
   min-width: 230px;
-  background-color: $dark800!important;
 
   .icon {
     justify-content: center !important;
   }
 
-  .drawerText {
-    font-weight: 300;
-    color: white;
-  }
 
   .listItem_selected {
     color: #afa0ff !important;

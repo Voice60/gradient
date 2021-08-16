@@ -6,6 +6,7 @@ import styles from '../styles/home.module.scss'
 import {useState} from 'react'
 import Layout from '../components/layout'
 import cn from "classnames";
+import {Typography} from "@material-ui/core";
 
 const Home: NextPage = () => {
   const [hover, setHover] = useState<string>('')
@@ -29,14 +30,14 @@ const Home: NextPage = () => {
             <a onMouseEnter={() => onMouseEnter('generate')}
                onMouseLeave={onMouseLeave}
                className={cn(styles.navLink, {[styles.navLink_animation]: hover === 'generate'})}>
-              Generate gradient
+              <Typography variant={'h4'}>Generate gradient</Typography>
             </a>
           </Link>
           <Link href="/favorites">
             <a onMouseEnter={() => onMouseEnter('favorites')}
                onMouseLeave={onMouseLeave}
                className={cn(styles.navLink, {[styles.navLink_animation]: hover === 'favorites'})}>
-              Favorites
+              <Typography variant={'h4'}>Favorites</Typography>
             </a>
           </Link>
         </nav>
