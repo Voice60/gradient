@@ -26,6 +26,13 @@ const Home: NextPage = () => {
           <title>Gradient</title>
         </Head>
         <nav className={styles.nav}>
+          <Link href="/favorites">
+            <a onMouseEnter={() => onMouseEnter('favorites')}
+               onMouseLeave={onMouseLeave}
+               className={cn(styles.navLink, {[styles.navLink_animation]: hover === 'favorites'})}>
+              <Typography variant={'h4'}>Favorites</Typography>
+            </a>
+          </Link>
           <Link href="/generate">
             <a onMouseEnter={() => onMouseEnter('generate')}
                onMouseLeave={onMouseLeave}
@@ -33,11 +40,11 @@ const Home: NextPage = () => {
               <Typography variant={'h4'}>Generate gradient</Typography>
             </a>
           </Link>
-          <Link href="/favorites">
-            <a onMouseEnter={() => onMouseEnter('favorites')}
+          <Link href="/presets">
+            <a onMouseEnter={() => onMouseEnter('presets')}
                onMouseLeave={onMouseLeave}
-               className={cn(styles.navLink, {[styles.navLink_animation]: hover === 'favorites'})}>
-              <Typography variant={'h4'}>Favorites</Typography>
+               className={cn(styles.navLink, {[styles.navLink_animation]: hover === 'presets'})}>
+              <Typography variant={'h4'}>Presets</Typography>
             </a>
           </Link>
         </nav>

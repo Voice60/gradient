@@ -1,14 +1,18 @@
-@import './variables.scss';
-
+$customPadding: 30px;
 .wrapper {
   min-height: 100%;
   width: 100%;
   display: flex;
   position: relative;
   flex-direction: column;
+  padding: 0 15px;
 
   .title {
     margin-top: 50px;
+  }
+
+  .gradientsTitle {
+    padding-left: $customPadding;
   }
 
   .gradients {
@@ -16,17 +20,17 @@
     grid-template-columns: repeat(auto-fill, 200px);
     justify-content: space-between;
     grid-gap: 20px;
-    margin: 0 30px 30px 30px;
+    margin: 0 $customPadding $customPadding $customPadding;
 
     @media (max-width: 768px) {
       grid-gap: unset;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
       flex-wrap: wrap;
 
       .card {
-        width: calc(50% - 30px);
-        margin-bottom: 30px;
+        width: calc(50% - #{$customPadding});
+        margin-bottom: $customPadding;
       }
     }
     @media (max-width: 480px) {
@@ -36,12 +40,11 @@
       align-items: center;
 
       .card {
-        margin-bottom: 30px;
-        width: calc(100% - 30px);
+        margin-bottom: $customPadding;
+        width: 100%;
       }
     }
   }
-
   .card {
     $cardBottomHeight: 45px;
     width: 200px;

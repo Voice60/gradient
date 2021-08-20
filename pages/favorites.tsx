@@ -4,23 +4,21 @@ import Layout from '../components/layout'
 import styles from '../styles/favorites.module.scss'
 import {Fragment, useEffect, useState} from 'react'
 import {Box, Typography} from '@material-ui/core'
-import {GradientsType} from "../types";
-import {getGradientProperty} from "../utiles";
+import {Gradient, GradientsType} from "../types";
+import {copyGradient, getGradientProperty} from "../utiles/functions";
 import CloseIcon from '@material-ui/icons/Close';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import SimpleSnackbar from "../components/snackbar";
 
 const Generate: NextPage = () => {
   const [gradients, setGradients] = useState<GradientsType>([]);
   const [hover, setHover] = useState<number | null>(null)
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false)
   useEffect(() => {
     if (window) {
       setGradients(localStorage.gradients ? JSON.parse(localStorage.gradients) : [])
     }
   }, [])
-
-  const copyGradient = (gradient: string[]): void => {
-    navigator.clipboard.writeText('background: ' + getGradientProperty(gradient))
-  }
 
   const deleteGradient = (index: number): void => {
     let newGradients = [...gradients]
@@ -28,6 +26,12 @@ const Generate: NextPage = () => {
     localStorage.setItem('gradients', JSON.stringify(newGradients))
     setGradients(newGradients)
   }
+
+  const copyGradientWithAlert = (grd: Gradient): void => {
+    copyGradient(grd)
+    setIsSnackbarOpen(true)
+  }
+
   return (
     <Layout>
       <Head>
@@ -61,7 +65,7 @@ const Generate: NextPage = () => {
                     </Fragment>
                   ))}
                 </div>
-                <div className={styles.cardBottom} onClick={() => copyGradient(grd)}>
+                <div className={styles.cardBottom} onClick={() => copyGradientWithAlert(grd)}>
                   <Typography className={styles.copyCaption} variant="subtitle1">
                     <FileCopyIcon/>&nbsp;<p style={{margin: 0}}>Copy</p>
                   </Typography>
@@ -72,8 +76,8 @@ const Generate: NextPage = () => {
           : <Typography align='center' className={styles.title} variant="h5" gutterBottom>
             There is no saved gradients yet
           </Typography>}
-
       </div>
+      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'}/>
     </Layout>
   )
 }

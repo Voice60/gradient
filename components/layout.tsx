@@ -13,7 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import Image from 'next/image';
 import cn from 'classnames';
 
-const Layout: NextPage = ({children}) => {
+const Layout: React.FC = ({children}) => {
   const router = useRouter()
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
 
@@ -56,26 +56,33 @@ const Layout: NextPage = ({children}) => {
           </ListItem>
           <Divider/>
 
-          <ListItem button
-                    onClick={() => router.push('/generate')}>
+          <ListItem onClick={() => router.push('/generate')}
+                    button>
             <Typography className={cn({[styles.listItem_selected]: router.pathname === '/generate'})}
                         variant='h6'>
               Generate gradient
             </Typography>
           </ListItem>
-          <ListItem button
-                    onClick={() => router.push('/favorites')}>
+          <ListItem onClick={() => router.push('/favorites')}
+                    button>
             <Typography className={cn({[styles.listItem_selected]: router.pathname === '/favorites'})}
                         variant='h6'>
               Favorites
             </Typography>
           </ListItem>
+          <ListItem onClick={() => router.push('/presets')}
+                    button>
+            <Typography className={cn({[styles.listItem_selected]: router.pathname === '/presets'})}
+                        variant='h6'>
+              Presets
+            </Typography>
+          </ListItem>
         </List>
       </Drawer>
-      <Box bgcolor={'background.paper'} className={styles.content}>
+      <Box bgcolor='background.paper' className={styles.content}>
         {children}
       </Box>
-      <Box bgcolor={'background.default'}>
+      <Box bgcolor='background.default'>
         <footer className={styles.footer}>
           <Typography className={styles.author} variant='h5'>
             Created by Voice

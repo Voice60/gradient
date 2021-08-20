@@ -1,23 +1,22 @@
 import type {NextPage} from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Layout from '../components/layout'
 import styles from '../styles/generate.module.scss'
 import {useState} from 'react'
 import Button from '@material-ui/core/Button';
-import {createTheme, ThemeProvider} from '@material-ui/core/styles';
 import CachedIcon from '@material-ui/icons/Cached';
-import {Box, ButtonGroup, Typography} from '@material-ui/core'
+import {ButtonGroup, Typography} from '@material-ui/core'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import {Gradient, GradientsType} from "../types";
-import {getGradientProperty} from "../utiles";
-import cn from 'classnames';
+import {copyGradient, getGradientProperty} from "../utiles/functions";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
+import SimpleSnackbar from "../components/snackbar";
 
 const Generate: NextPage = () => {
   const [gradient, setGradient] = useState<Gradient>([])
   const [isSaved, setIsSaved] = useState<boolean>(false)
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false)
   type hexLetter = string | number
   const hexArray: hexLetter[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
 
@@ -42,8 +41,9 @@ const Generate: NextPage = () => {
     setIsSaved(false)
   }
 
-  const copyGradient = (): void => {
-    navigator.clipboard.writeText('background: ' + getGradientProperty(gradient))
+  const copyGradientWithAlert = (): void => {
+    copyGradient(gradient)
+    setIsSnackbarOpen(true)
   }
 
   const generateGradient = (): void => {
@@ -91,12 +91,13 @@ const Generate: NextPage = () => {
                 <BookmarkBorderIcon/>
                 <Typography className={styles.btnText} variant='button'>&nbsp;save</Typography>
               </Button>}
-            <Button disabled={gradient.length === 0} size="large" onClick={copyGradient} variant="contained" color="primary">
+            <Button disabled={gradient.length === 0} size="large" onClick={copyGradientWithAlert} variant="contained" color="primary">
               <FileCopyIcon/>
               <Typography className={styles.btnText} variant='button'>&nbsp;copy</Typography>
             </Button>
           </ButtonGroup>
       </div>
+      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'} />
     </Layout>
   )
 }
