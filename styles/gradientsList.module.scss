@@ -13,7 +13,7 @@ $customPadding: 30px;
     flex-wrap: wrap;
 
     .card {
-      width: 50% - #{$customPadding} / 4;
+      width: calc(50% - #{$customPadding} / 4);
       margin-bottom: $customPadding - 10px;
     }
   }
