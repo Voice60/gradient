@@ -1,0 +1,12 @@
+.wrapper {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 0 15px;
+}
+
+.title {
+  margin-top: 50px !important;
+}

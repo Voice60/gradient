@@ -5,20 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c26e462-9c19-4683-b373-91a47b0a47f3" name="Changes" comment="added favorites list">
-      <change afterPath="$PROJECT_DIR$/components/snackbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/presets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/presets.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/presets.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utiles/themeObj.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/card.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/gradientsList.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/utils.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/snackbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/snackbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/theme.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/hello.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/favorites.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/favorites.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/generate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/generate.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/presets.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/presets.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/copyIcon.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/favorites.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/favorites.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/generate.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/generate.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utiles/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utiles/functions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/presets.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utiles/functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utiles/functions.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +48,9 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1weIxy7ff5MArIJrjX3ZSAB4RVE" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
@@ -61,7 +67,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.EditorConfig" />
     <property name="settings.editor.splitter.proportion" value="0.20795107" />
     <property name="ts.external.directory.path" value="D:\reactApp\gradient\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -105,7 +111,9 @@
       <workItem from="1629045130980" duration="8763000" />
       <workItem from="1629085102848" duration="12068000" />
       <workItem from="1629377408804" duration="5112000" />
-      <workItem from="1629452675552" duration="7898000" />
+      <workItem from="1629452675552" duration="7988000" />
+      <workItem from="1629477368241" duration="2684000" />
+      <workItem from="1629631952830" duration="9955000" />
     </task>
     <task id="LOCAL-00001" summary="reworked gradient page">
       <created>1628814339616</created>

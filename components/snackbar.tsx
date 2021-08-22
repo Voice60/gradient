@@ -1,22 +1,14 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
+import React, {SyntheticEvent} from 'react';
+import Snackbar, {SnackbarCloseReason} from '@material-ui/core/Snackbar';
 
 interface ISimpleSnackbar {
   isOpen: boolean
-
-  setIsOpen(isOpen: boolean): void
-
+  setIsOpen: (isOpen: boolean) => void
   message: string
 }
 
 const SimpleSnackbar: React.FC<ISimpleSnackbar> = ({isOpen, setIsOpen, message}) => {
-
-  const handleClick = (): void => {
-    setIsOpen(true);
-  };
-
-  const handleClose = (event: any, reason: string): void => {
+  const handleClose = (event: SyntheticEvent<any, Event>, reason: SnackbarCloseReason): void => {
     if (reason === 'clickaway') {
       return;
     }

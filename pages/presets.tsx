@@ -2,14 +2,16 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import Layout from '../components/layout'
 import presets from '../data/presets.json'
-import styles from "../styles/presets.module.scss";
+import card from "../styles/card.module.scss";
+import gradientsList from "../styles/gradientsList.module.scss";
 import {Box, Typography} from "@material-ui/core";
 import React, {Fragment, useState} from "react";
-import CloseIcon from "@material-ui/icons/Close";
 import {copyGradient, getGradientProperty} from "../utiles/functions";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import SimpleSnackbar from "../components/snackbar";
 import {Gradient} from "../types";
+import cn from "classnames";
+import utils from "../styles/utils.module.scss";
 
 const Generate: NextPage = () => {
   const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false)
@@ -23,39 +25,39 @@ const Generate: NextPage = () => {
       <Head>
         <title>Presets</title>
       </Head>
-      <div className={styles.wrapper}>
-        <Typography align='center' className={styles.title} variant="h3" gutterBottom>
+      <div className={utils.wrapper}>
+        <Typography align='center' className={utils.title} variant="h3" gutterBottom>
           Presets
         </Typography>
         {presets.map((preset, index) => (
           <React.Fragment key={index}>
-            <Typography className={styles.gradientsTitle} variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom>
               {preset.title}
             </Typography>
-            <div className={styles.gradients}>
+            <div className={gradientsList.gradients}>
               {preset.gradients.map((gradient, index1) => (
-                <Box bgcolor='background.default' className={styles.card}
+                <Box bgcolor='background.default' className={cn(gradientsList.card, card.card)}
                      key={index1}>
-                  <div className={styles.cardTop}>
+                  <div className={card.cardTop}>
                     <div style={
                       {
                         background: getGradientProperty(gradient)
                       }}
-                         className={styles.gradient}>
+                         className={card.gradient}>
                     </div>
                     {gradient.map((grdColor, index2) => (
                       <Fragment key={index2}>
-                        <Typography className={styles.copyText} variant="subtitle1">
+                        <Typography className={card.copyText} variant="subtitle1">
                           {`#${grdColor}`}
                         </Typography>
-                        <Typography className={styles.copyText} variant="subtitle1">
+                        <Typography className={card.copyText} variant="subtitle1">
                           {`${gradient.length - 1 !== index2 ? '>' : ''}`}
                         </Typography>
                       </Fragment>
                     ))}
                   </div>
-                  <div className={styles.cardBottom} onClick={() => copyGradientWithAlert(gradient)}>
-                    <Typography className={styles.copyCaption} variant="subtitle1">
+                  <div className={card.cardBottom} onClick={() => copyGradientWithAlert(gradient)}>
+                    <Typography className={card.copyCaption} variant="subtitle1">
                       <FileCopyIcon/>&nbsp;<p style={{margin: 0}}>Copy</p>
                     </Typography>
                   </div>

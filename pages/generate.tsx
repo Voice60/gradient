@@ -77,27 +77,30 @@ const Generate: NextPage = () => {
                     gutterBottom>
           {`background: ${getGradientProperty(gradient)}`}
         </Typography>
-          <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-            <Button size="large" onClick={generateGradient} variant="contained" color="primary">
-              <CachedIcon/>
-              &nbsp;generate
+        <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
+          <Button size="large" onClick={generateGradient} variant="contained" color="primary">
+            <CachedIcon/>
+            &nbsp;generate
+          </Button>
+          {isSaved
+            ? <Button disabled={gradient.length === 0} size="large" onClick={deleteGradient} variant="contained"
+                      color="primary">
+              <BookmarkIcon/>
+              <Typography className={styles.btnText} variant='button'>&nbsp;delete</Typography>
             </Button>
-            {isSaved
-              ? <Button disabled={gradient.length === 0} size="large" onClick={deleteGradient} variant="contained" color="primary">
-                <BookmarkIcon/>
-                <Typography className={styles.btnText} variant='button'>&nbsp;delete</Typography>
-              </Button>
-              : <Button disabled={gradient.length === 0} size="large" onClick={saveGradient} variant="contained" color="primary">
-                <BookmarkBorderIcon/>
-                <Typography className={styles.btnText} variant='button'>&nbsp;save</Typography>
-              </Button>}
-            <Button disabled={gradient.length === 0} size="large" onClick={copyGradientWithAlert} variant="contained" color="primary">
-              <FileCopyIcon/>
-              <Typography className={styles.btnText} variant='button'>&nbsp;copy</Typography>
-            </Button>
-          </ButtonGroup>
+            : <Button disabled={gradient.length === 0} size="large" onClick={saveGradient} variant="contained"
+                      color="primary">
+              <BookmarkBorderIcon/>
+              <Typography className={styles.btnText} variant='button'>&nbsp;save</Typography>
+            </Button>}
+          <Button disabled={gradient.length === 0} size="large" onClick={copyGradientWithAlert} variant="contained"
+                  color="primary">
+            <FileCopyIcon/>
+            <Typography className={styles.btnText} variant='button'>&nbsp;copy</Typography>
+          </Button>
+        </ButtonGroup>
       </div>
-      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'} />
+      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'}/>
     </Layout>
   )
 }

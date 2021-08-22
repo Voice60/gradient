@@ -1,5 +1,5 @@
-import React, {createContext, useEffect, useState} from 'react';
-import {createTheme, ThemeProvider} from '@material-ui/core/styles';
+import React, {createContext, useState} from 'react';
+import {ThemeProvider} from '@material-ui/core/styles';
 import {CssBaseline} from "@material-ui/core";
 import {darkTheme, lightTheme} from "../utiles/themeObj";
 

@@ -1,0 +1,31 @@
+$customPadding: 30px;
+.gradients {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  justify-content: space-between;
+  grid-gap: 15px;
+  margin-bottom: $customPadding / 2;
+
+  @media (max-width: 768px) {
+    grid-gap: unset;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .card {
+      width: 50% - #{$customPadding} / 4;
+      margin-bottom: $customPadding - 10px;
+    }
+  }
+  @media (max-width: 480px) {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .card {
+      margin-bottom: $customPadding - 10px;
+      width: 100%;
+    }
+  }
+}

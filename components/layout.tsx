@@ -1,6 +1,5 @@
 import {Box, Drawer, Typography} from '@material-ui/core'
-import type {NextPage} from 'next'
-import React, {memo, useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import styles from '../styles/layout.module.scss'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -8,7 +7,6 @@ import {useRouter} from 'next/dist/client/router';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Image from 'next/image';
 import cn from 'classnames';
