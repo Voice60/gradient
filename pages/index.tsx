@@ -50,7 +50,7 @@ const Home: NextPage = () => {
           </div>
           <div className={styles.info}>
             <Typography variant={'h6'}>Hello!
-              It&apos;s a gradient generator, that can help you to choose a gradient.
+              It is a gradient generator, that can help you to choose a gradient.
               Here you can make randomly generated gradient to add him in your own project.
               Сompletely free and extremely convenient</Typography>
           </div>
