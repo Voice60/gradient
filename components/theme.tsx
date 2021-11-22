@@ -1,32 +1,40 @@
-import React, {createContext, useState} from 'react';
-import {ThemeProvider} from '@material-ui/core/styles';
-import {CssBaseline} from "@material-ui/core";
-import {darkTheme, lightTheme} from "../utiles/themeObj";
+import React, { createContext, useEffect, useState } from 'react';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { CssBaseline } from "@material-ui/core";
+import { darkTheme, lightTheme } from "../utiles/themeObj";
 
-const Theme: React.FC = ({children}) => {
-  interface IThemeContext {
-    darkMode: boolean,
-    setDarkMode: (darkMode: boolean) => void
-  }
+interface IThemeContext {
+  darkMode?: boolean,
+  setDarkMode?: (darkMode: boolean) => void
+}
 
-  const userPrefersDark = () => {
+const Theme: React.FC = ({ children }) => {
+
+  useEffect(() => {
     if (process.browser) {
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      let theme: undefined | string = localStorage.getItem('darkTheme')
+      if (theme === undefined) {
+        localStorage.setItem('darkTheme', String(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches))
+      }
+    }
+  }, [])
+
+  const getTheme = (): object | null => {
+    if (process.browser) {
+      if (JSON.parse(localStorage?.darkTheme)) {
+        return darkTheme
+      }
+      return lightTheme
+    } else {
+      return null
     }
   }
-  const [darkMode, setDarkMode] = useState<boolean>(userPrefersDark)
 
-  const ThemeContext = createContext<IThemeContext>({darkMode, setDarkMode});
   return (
-    <ThemeContext.Provider value={{
-      darkMode,
-      setDarkMode
-    }}>
-      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-        <CssBaseline/>
-        {children}
-      </ThemeProvider>
-    </ThemeContext.Provider>
+    <ThemeProvider theme={getTheme()}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
   );
 };
 

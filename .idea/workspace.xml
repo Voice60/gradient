@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0c26e462-9c19-4683-b373-91a47b0a47f3" name="Changes" comment="added favorites list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/gradientsList.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/gradientsList.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vampolis_request" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -97,7 +96,8 @@
       <workItem from="1629377408804" duration="5112000" />
       <workItem from="1629452675552" duration="7988000" />
       <workItem from="1629477368241" duration="2684000" />
-      <workItem from="1629631952830" duration="10357000" />
+      <workItem from="1629631952830" duration="10712000" />
+      <workItem from="1629790063511" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="reworked gradient page">
       <created>1628814339616</created>
