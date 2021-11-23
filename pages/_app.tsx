@@ -5,9 +5,7 @@ import Theme from "../components/theme";
 
 function MyApp({Component, pageProps}: AppProps) {
 
-  return <Theme>
-    <Component {...pageProps} />
-  </Theme>
+  return <Component {...pageProps} />
 }
 
 export default MyApp

@@ -17,10 +17,10 @@ const Layout: React.FC = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
 
   const [theme, setTheme] = useState(() => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
       return JSON.parse(localStorage.getItem('darkTheme'))
     }
-    return null
+    return true
   })
 
   const setDarkTheme = (theme: boolean): void => {
@@ -29,7 +29,7 @@ const Layout: React.FC = ({ children }) => {
   }
 
   const checkPC = () => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
       if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         return false
       }
@@ -39,7 +39,7 @@ const Layout: React.FC = ({ children }) => {
 
   const hideDrawer = (): void => setIsDrawerOpen(false)
   const showDrawer = (): void => setIsDrawerOpen(true)
-
+  debugger
   return (
     <Theme>
       <div className={cn(styles.container,
@@ -91,7 +91,7 @@ const Layout: React.FC = ({ children }) => {
             </ListItem>
           </List>
           <ListItem className={styles.switch}>
-            <FormControlLabel control={<Switch checked={theme} onChange={(e) => { setDarkTheme(e.target.checked) }} />} label="Change theme" />
+            <FormControlLabel control={<Switch checked={theme} onChange={(e) => { setDarkTheme(e.target.checked) }} />} label="Dark theme" />
           </ListItem>
         </Drawer>
         <Box bgcolor='background.paper' className={styles.content}>

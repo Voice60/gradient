@@ -18,6 +18,7 @@ const Generate: NextPage = () => {
   const [gradients, setGradients] = useState<GradientsType>([]);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false)
   useEffect(() => {
+    debugger
     if (window) {
       setGradients(localStorage.gradients ? JSON.parse(localStorage.gradients) : [])
     }
