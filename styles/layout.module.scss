@@ -52,14 +52,21 @@
 }
 
 .drawer {
+  position: relative;
   min-width: 230px;
 
   .icon {
     justify-content: center !important;
   }
 
-
   .listItem_selected {
     color: #afa0ff !important;
+  }
+
+  .themeSwitcher {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
 }

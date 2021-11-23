@@ -39,7 +39,6 @@ const Layout: React.FC = ({ children }) => {
 
   const hideDrawer = (): void => setIsDrawerOpen(false)
   const showDrawer = (): void => setIsDrawerOpen(true)
-  debugger
   return (
     <Theme>
       <div className={cn(styles.container,
@@ -90,9 +89,13 @@ const Layout: React.FC = ({ children }) => {
               </Typography>
             </ListItem>
           </List>
-          <ListItem className={styles.switch}>
-            <FormControlLabel control={<Switch checked={theme} onChange={(e) => { setDarkTheme(e.target.checked) }} />} label="Dark theme" />
-          </ListItem>
+          <div className={styles.themeSwitcher}>
+            <Divider />
+            <ListItem>
+              <FormControlLabel control={<Switch checked={theme} onChange={(e) => { setDarkTheme(e.target.checked) }} />} label="Dark theme" />
+            </ListItem>
+          </div>
+
         </Drawer>
         <Box bgcolor='background.paper' className={styles.content}>
           {children}
