@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/home.module.scss'
 import { useEffect, useState } from 'react'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import cn from "classnames";
 import { Typography } from "@material-ui/core";
 

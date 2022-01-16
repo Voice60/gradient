@@ -1,17 +1,17 @@
-import type {NextPage} from 'next'
+import { ButtonGroup, Typography } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import BookmarkIcon from '@material-ui/icons/Bookmark'
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder'
+import CachedIcon from '@material-ui/icons/Cached'
+import FileCopyIcon from "@material-ui/icons/FileCopy"
+import type { NextPage } from 'next'
 import Head from 'next/head'
-import Layout from '../components/layout'
+import { useState } from 'react'
+import Layout from '../components/Layout/Layout'
+import SimpleSnackbar from "../components/SnackBar"
 import styles from '../styles/generate.module.scss'
-import {useState} from 'react'
-import Button from '@material-ui/core/Button';
-import CachedIcon from '@material-ui/icons/Cached';
-import {ButtonGroup, Typography} from '@material-ui/core'
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-import {Gradient, GradientsType} from "../types";
-import {copyGradient, getGradientProperty} from "../utiles/functions";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
-import SimpleSnackbar from "../components/snackbar";
+import { Gradient, GradientsType } from "../types"
+import { copyGradient, getGradientProperty } from "../utiles/functions"
 
 const Generate: NextPage = () => {
   const [gradient, setGradient] = useState<Gradient>([])
@@ -66,41 +66,41 @@ const Generate: NextPage = () => {
       </Head>
       <div className={styles.wrapper}>
         <div className={styles.gradient}
-             style={{background: gradient.length ? getGradientProperty(gradient) : 'transparent;'}}></div>
+          style={{ background: gradient.length ? getGradientProperty(gradient) : 'transparent;' }}></div>
         <Typography align='center' className={styles.title} variant="h3" gutterBottom>
           Generator
         </Typography>
-        <Typography style={{visibility: gradient.length ? 'visible' : 'hidden'}}
-                    className={styles.gradientProperty}
-                    align='center'
-                    variant='h5'
-                    gutterBottom>
+        <Typography style={{ visibility: gradient.length ? 'visible' : 'hidden' }}
+          className={styles.gradientProperty}
+          align='center'
+          variant='h5'
+          gutterBottom>
           {`background: ${getGradientProperty(gradient)}`}
         </Typography>
         <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
           <Button size="large" onClick={generateGradient} variant="contained" color="primary">
-            <CachedIcon/>
+            <CachedIcon />
             &nbsp;generate
           </Button>
           {isSaved
             ? <Button disabled={gradient.length === 0} size="large" onClick={deleteGradient} variant="contained"
-                      color="primary">
-              <BookmarkIcon/>
+              color="primary">
+              <BookmarkIcon />
               <Typography className={styles.btnText} variant='button'>&nbsp;delete</Typography>
             </Button>
             : <Button disabled={gradient.length === 0} size="large" onClick={saveGradient} variant="contained"
-                      color="primary">
-              <BookmarkBorderIcon/>
+              color="primary">
+              <BookmarkBorderIcon />
               <Typography className={styles.btnText} variant='button'>&nbsp;save</Typography>
             </Button>}
           <Button disabled={gradient.length === 0} size="large" onClick={copyGradientWithAlert} variant="contained"
-                  color="primary">
-            <FileCopyIcon/>
+            color="primary">
+            <FileCopyIcon />
             <Typography className={styles.btnText} variant='button'>&nbsp;copy</Typography>
           </Button>
         </ButtonGroup>
       </div>
-      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'}/>
+      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'} />
     </Layout>
   )
 }

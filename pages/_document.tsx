@@ -1,5 +1,5 @@
-import Document, {Head, Html, Main, NextScript} from 'next/document'
-import {ServerStyleSheets} from '@material-ui/core/styles';
+import { ServerStyleSheets } from '@material-ui/core/styles';
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 import React from 'react';
 
 export default class MyDocument extends Document {
@@ -7,12 +7,12 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
-          <link rel="shortcut icon" href="/favicon.ico"/>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+          <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
         <body>
-        <Main/>
-        <NextScript/>
+          <Main />
+          <NextScript />
         </body>
       </Html>
     )

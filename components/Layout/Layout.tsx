@@ -1,16 +1,17 @@
 import { Box, Drawer, FormControlLabel, Switch, Typography } from '@material-ui/core'
-import React, { useContext, useState } from 'react'
-import styles from '../styles/layout.module.scss'
+import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import { useRouter } from 'next/dist/client/router';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Divider from '@material-ui/core/Divider';
-import Image from 'next/image';
+import MenuIcon from '@material-ui/icons/Menu';
 import cn from 'classnames';
-import Theme from './theme';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import React, { useContext, useState } from 'react'
+
+import Theme from '../Theme';
+import styles from './layout.module.scss'
 
 const Layout: React.FC = ({ children }) => {
   const router = useRouter()

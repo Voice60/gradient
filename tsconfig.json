@@ -17,6 +17,6 @@
     "noImplicitThis": true,
     "strictNullChecks": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Layout/Layout.test.jsx"],
   "exclude": ["node_modules"]
 }

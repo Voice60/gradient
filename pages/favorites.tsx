@@ -1,24 +1,23 @@
-import type {NextPage} from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import styles from '../styles/favorites.module.scss'
 import card from "../styles/card.module.scss";
 import gradientsList from "../styles/gradientsList.module.scss";
 import utils from "../styles/utils.module.scss";
-import {Fragment, useEffect, useState} from 'react'
-import {Box, Typography} from '@material-ui/core'
-import {Gradient, GradientsType} from "../types";
-import {copyGradient, getGradientProperty} from "../utiles/functions";
+import { Fragment, useEffect, useState } from 'react'
+import { Box, Typography } from '@material-ui/core'
+import { Gradient, GradientsType } from "../types";
+import { copyGradient, getGradientProperty } from "../utiles/functions";
 import CloseIcon from '@material-ui/icons/Close';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
-import SimpleSnackbar from "../components/snackbar";
+import SimpleSnackbar from "../components/SnackBar";
 import cn from "classnames";
 
 const Generate: NextPage = () => {
   const [gradients, setGradients] = useState<GradientsType>([]);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false)
   useEffect(() => {
-    debugger
     if (window) {
       setGradients(localStorage.gradients ? JSON.parse(localStorage.gradients) : [])
     }
@@ -49,14 +48,14 @@ const Generate: NextPage = () => {
           ? <div className={gradientsList.gradients}>
             {gradients.map((grd, index) => (
               <Box bgcolor='background.default' className={cn(gradientsList.card, card.card)}
-                   key={index}>
+                key={index}>
                 <div className={card.cardTop}>
-                  <CloseIcon onClick={() => deleteGradient(index)} className={styles.cross}/>
+                  <CloseIcon onClick={() => deleteGradient(index)} className={styles.cross} />
                   <div style={
                     {
                       background: getGradientProperty(grd)
                     }}
-                       className={card.gradient}>
+                    className={card.gradient}>
                   </div>
                   {grd.map((grdColor, index) => (
                     <Fragment key={index}>
@@ -71,7 +70,7 @@ const Generate: NextPage = () => {
                 </div>
                 <div className={card.cardBottom} onClick={() => copyGradientWithAlert(grd)}>
                   <Typography className={card.copyCaption} variant="subtitle1">
-                    <FileCopyIcon/>&nbsp;<p style={{margin: 0}}>Copy</p>
+                    <FileCopyIcon />&nbsp;<p style={{ margin: 0 }}>Copy</p>
                   </Typography>
                 </div>
               </Box>
@@ -81,7 +80,7 @@ const Generate: NextPage = () => {
             There is no saved gradients yet
           </Typography>}
       </div>
-      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'}/>
+      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'} />
     </Layout>
   )
 }

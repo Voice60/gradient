@@ -6,21 +6,34 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "classnames": "^2.3.1",
-    "next": "11.1.0",
+    "next": "^12.0.8",
+    "next-router-mock": "^0.6.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "sass": "^1.37.5"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
     "@types/react": "17.0.17",
+    "css-loader": "^6.5.1",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.7",
+    "jest-localstorage-mock": "^2.4.18",
     "typescript": "4.3.5"
+  },
+  "jest": {
+    "resetMocks": false,
+    "setupFiles": ["jest-localstorage-mock"]
   }
 }

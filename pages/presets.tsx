@@ -1,17 +1,17 @@
-import type {NextPage} from 'next'
-import Head from 'next/head'
-import Layout from '../components/layout'
-import presets from '../data/presets.json'
+import { Box, Typography } from "@material-ui/core";
+import FileCopyIcon from "@material-ui/icons/FileCopy";
+import cn from "classnames";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import React, { Fragment, useState } from "react";
+import Layout from '../components/Layout/Layout';
+import SimpleSnackbar from "../components/SnackBar";
+import presets from '../data/presets.json';
 import card from "../styles/card.module.scss";
 import gradientsList from "../styles/gradientsList.module.scss";
-import {Box, Typography} from "@material-ui/core";
-import React, {Fragment, useState} from "react";
-import {copyGradient, getGradientProperty} from "../utiles/functions";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
-import SimpleSnackbar from "../components/snackbar";
-import {Gradient} from "../types";
-import cn from "classnames";
 import utils from "../styles/utils.module.scss";
+import { Gradient } from "../types";
+import { copyGradient, getGradientProperty } from "../utiles/functions";
 
 const Generate: NextPage = () => {
   const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false)
@@ -37,13 +37,13 @@ const Generate: NextPage = () => {
             <div className={gradientsList.gradients}>
               {preset.gradients.map((gradient, index1) => (
                 <Box bgcolor='background.default' className={cn(gradientsList.card, card.card)}
-                     key={index1}>
+                  key={index1}>
                   <div className={card.cardTop}>
                     <div style={
                       {
                         background: getGradientProperty(gradient)
                       }}
-                         className={card.gradient}>
+                      className={card.gradient}>
                     </div>
                     {gradient.map((grdColor, index2) => (
                       <Fragment key={index2}>
@@ -58,7 +58,7 @@ const Generate: NextPage = () => {
                   </div>
                   <div className={card.cardBottom} onClick={() => copyGradientWithAlert(gradient)}>
                     <Typography className={card.copyCaption} variant="subtitle1">
-                      <FileCopyIcon/>&nbsp;<p style={{margin: 0}}>Copy</p>
+                      <FileCopyIcon />&nbsp;<p style={{ margin: 0 }}>Copy</p>
                     </Typography>
                   </div>
                 </Box>
@@ -67,7 +67,7 @@ const Generate: NextPage = () => {
           </React.Fragment>
         ))}
       </div>
-      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'}/>
+      <SimpleSnackbar isOpen={isSnackbarOpen} setIsOpen={setIsSnackbarOpen} message={'Gradient copied'} />
     </Layout>
   )
 }
