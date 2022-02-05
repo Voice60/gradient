@@ -1,5 +1,5 @@
-import React, {SyntheticEvent} from 'react';
-import Snackbar, {SnackbarCloseReason} from '@material-ui/core/Snackbar';
+import Snackbar, { SnackbarCloseReason } from '@material-ui/core/Snackbar';
+import React, { SyntheticEvent } from 'react';
 
 interface ISimpleSnackbar {
   isOpen: boolean

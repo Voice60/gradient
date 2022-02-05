@@ -18,8 +18,8 @@ const Layout: React.FC = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
 
   const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return JSON.parse(localStorage.getItem('darkTheme'))
+    if (typeof window !== 'undefined' && localStorage.darkTheme) {
+      return localStorage.darkTheme === 'true'
     }
     return true
   })

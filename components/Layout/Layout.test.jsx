@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import Layout from './index';
 
@@ -14,4 +14,37 @@ describe('Layout component', () => {
 
     expect(screen.getByText('Layout test')).toBeInTheDocument()
   })
+  it('Set localStorage theme if it is empty', () => {
+    render(<Layout>
+      Layout test
+    </Layout>)
+
+    expect(screen.getByText('Layout test')).toBeInTheDocument()
+  })
+  it('Drawer button works', () => {
+    render(<Layout>
+      Layout test
+    </Layout>)
+
+    const button = screen.getByLabelText('menu')
+    button.click()
+    expect(screen.getByText('Generate gradient')).toBeInTheDocument()
+    expect(screen.getByText('Favorites')).toBeInTheDocument()
+    expect(screen.getByText('Presets')).toBeInTheDocument()
+    expect(screen.getByText('Dark theme')).toBeInTheDocument()
+  })
+  it('Switch theme button works', () => {
+    render(<Layout>
+      Layout test
+    </Layout>)
+
+    const button = screen.getByLabelText('menu')
+    button.click()
+    expect(localStorage.darkTheme).toBeUndefined
+    screen.getByRole('checkbox').click()
+    expect(localStorage.darkTheme).toBe('true')
+    screen.getByRole('checkbox').click()
+    expect(localStorage.darkTheme).toBe('false')
+  })
+
 })

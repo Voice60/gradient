@@ -8,15 +8,14 @@ const Theme: React.FC = ({ children }) => {
 
   const [currentTheme, setCurrentTheme] = useState(darkTheme)
 
-  useEffect(():void => {
-    debugger
+  useEffect((): void => {
     if (typeof window !== 'undefined') {
-      console.log(localStorage.darkTheme)
       if (localStorage.darkTheme === undefined) {
+        debugger
         localStorage.setItem('darkTheme', String(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches))
       }
       if (localStorage.darkTheme === 'true') {
-          setCurrentTheme(darkTheme)
+        setCurrentTheme(darkTheme)
       } else {
         setCurrentTheme(lightTheme)
       }
