@@ -1,7 +1,6 @@
 .cross {
-  position: absolute;
+  position: absolute !important;
   top: 10px;
   right: 10px;
-  cursor: pointer;
   z-index: 1;
 }

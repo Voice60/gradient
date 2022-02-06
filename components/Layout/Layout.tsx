@@ -1,3 +1,5 @@
+import Theme from '../Theme';
+import styles from './layout.module.scss'
 import { Box, Drawer, FormControlLabel, Switch, Typography } from '@material-ui/core'
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,9 +11,6 @@ import cn from 'classnames';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useContext, useState } from 'react'
-
-import Theme from '../Theme';
-import styles from './layout.module.scss'
 
 const Layout: React.FC = ({ children }) => {
   const router = useRouter()

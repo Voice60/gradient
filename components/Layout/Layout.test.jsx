@@ -14,13 +14,6 @@ describe('Layout component', () => {
 
     expect(screen.getByText('Layout test')).toBeInTheDocument()
   })
-  it('Set localStorage theme if it is empty', () => {
-    render(<Layout>
-      Layout test
-    </Layout>)
-
-    expect(screen.getByText('Layout test')).toBeInTheDocument()
-  })
   it('Drawer button works', () => {
     render(<Layout>
       Layout test
