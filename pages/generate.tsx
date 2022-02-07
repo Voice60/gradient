@@ -4,12 +4,13 @@ import BookmarkIcon from '@material-ui/icons/Bookmark'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder'
 import CachedIcon from '@material-ui/icons/Cached'
 import FileCopyIcon from "@material-ui/icons/FileCopy"
+
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
 import Layout from '../components/Layout/Layout'
 import SimpleSnackbar from "../components/SnackBar"
-import styles from '../styles/generate.module.scss'
+import styles from '../styles/pages/generate.module.scss'
 import { Gradient, GradientsType } from "../types"
 import { copyGradient, getGradientProperty } from "../utiles/functions"
 

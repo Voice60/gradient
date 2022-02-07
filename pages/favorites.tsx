@@ -1,11 +1,12 @@
 import { Typography } from "@material-ui/core";
+
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import GradientCard from "../components/GradientCard";
 import Layout from "../components/Layout";
 import SimpleSnackbar from "../components/SnackBar";
-import styles from "../styles/favorites.module.scss";
+import styles from "../styles/pages/favorites.module.scss";
 import gradientsList from "../styles/gradientsList.module.scss";
 import utils from "../styles/utils.module.scss";
 import { Gradient, GradientsType } from "../types";
