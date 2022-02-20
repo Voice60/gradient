@@ -12,19 +12,12 @@ import Layout from '../components/Layout/Layout'
 import SimpleSnackbar from "../components/SnackBar"
 import styles from '../styles/pages/generate.module.scss'
 import { Gradient, GradientsType } from "../types"
-import { copyGradient, getGradientProperty } from "../utiles/functions"
+import { copyGradient, getGradientProperty, generateGradient } from "../utiles/functions"
 
 const Generate: NextPage = () => {
   const [gradient, setGradient] = useState<Gradient>([])
   const [isSaved, setIsSaved] = useState<boolean>(false)
   const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false)
-  type hexLetter = string | number
-  const hexArray: hexLetter[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
-
-  const generateLetter = (): string => {
-    const n = Math.floor(Math.random() * 16)
-    return hexArray[n].toString()
-  }
 
   const saveGradient = (): void => {
     if (gradient.length) {
@@ -47,16 +40,9 @@ const Generate: NextPage = () => {
     setIsSnackbarOpen(true)
   }
 
-  const generateGradient = (): void => {
+  const generateNewGradient = (): void => {
     setIsSaved(false)
-    let newGradient: Gradient = []
-    for (let i = 0; i < 2; i++) {
-      let grd: string = ''
-      for (let k = 0; k < 6; k++) {
-        grd += generateLetter()
-      }
-      newGradient.push(grd)
-    }
+    let newGradient: Gradient = generateGradient()
     setGradient(newGradient)
   }
 
@@ -79,7 +65,7 @@ const Generate: NextPage = () => {
           {`background: ${getGradientProperty(gradient)}`}
         </Typography>
         <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-          <Button size="large" onClick={generateGradient} variant="contained" color="primary">
+          <Button size="large" onClick={generateNewGradient} variant="contained" color="primary">
             <CachedIcon />
             &nbsp;generate
           </Button>

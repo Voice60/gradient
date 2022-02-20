@@ -17,6 +17,7 @@
     "next-router-mock": "^0.6.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-reveal": "^1.2.2",
     "sass": "^1.37.5"
   },
   "devDependencies": {
@@ -34,6 +35,8 @@
   },
   "jest": {
     "resetMocks": false,
-    "setupFiles": ["jest-localstorage-mock"]
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
   }
 }

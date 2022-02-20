@@ -1,63 +1,107 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Link from 'next/link'
-import styles from '../styles/pages/home.module.scss'
-import { useEffect, useState } from 'react'
-import Layout from '../components/Layout'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Link from "next/link";
+import styles from "../styles/pages/home.module.scss";
+import { useEffect, useState } from "react";
+import Layout from "../components/Layout";
 import cn from "classnames";
-import { Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
+//@ts-ignore
+import Fade from "react-reveal/Fade";
+import Image from "next/image";
+import GradientCard from "../components/GradientCard";
+import { generateGradient } from "../utiles/functions";
+interface ILoadElements {
+  [key: string]: boolean;
+}
 
 const Home: NextPage = () => {
-  const [hover, setHover] = useState<string>('')
+  const [hover, setHover] = useState<string>("");
 
   const onMouseEnter = (name: string): void => {
-    setHover(name)
-  }
+    setHover(name);
+  };
 
   const onMouseLeave = (): void => {
-    setHover('')
-  }
+    setHover("");
+  };
 
   return (
     <Layout>
       <div className={styles.wrapper}>
         <Head>
-          <title>Gradient</title>
+          <title>Main</title>
         </Head>
-        <div className={styles.content}>
-          <div className={styles.actions}>
-            <Link href="/generate">
-              <a onMouseEnter={() => onMouseEnter('generate')}
-                onMouseLeave={onMouseLeave}
-                className={cn(styles.navLink, { [styles.navLink_animation]: hover === 'generate' })}>
-                <Typography variant={'h4'}>Generate</Typography>
-              </a>
-            </Link>
-            <Link href="/favorites">
-              <a onMouseEnter={() => onMouseEnter('favorites')}
-                onMouseLeave={onMouseLeave}
-                className={cn(styles.navLink, { [styles.navLink_animation]: hover === 'favorites' })}>
-                <Typography variant={'h4'}>Favorites</Typography>
-              </a>
-            </Link>
-            <Link href="/presets">
-              <a onMouseEnter={() => onMouseEnter('presets')}
-                onMouseLeave={onMouseLeave}
-                className={cn(styles.navLink, { [styles.navLink_animation]: hover === 'presets' })}>
-                <Typography variant={'h4'}>Presets</Typography>
-              </a>
-            </Link >
-          </div>
-          <div className={styles.info}>
-            <Typography variant={'h6'}>Hello!
-              It is a gradient generator, that can help you to choose a gradient.
-              Here you can make randomly generated gradient to add him in your own project.
-              Сompletely free and extremely convenient</Typography>
-          </div>
-        </div>
+        <Box
+          component="section"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            height: "100vh",
+            justifyContent: "center",
+          }}
+        >
+          <Fade left>
+            <Image
+              width={500}
+              height={500}
+              alt="Gradient ball"
+              src="/static/GradientBall.png"
+            />
+          </Fade>
+          <Fade right>
+            <Typography align="center" gutterBottom variant={"h1"}>
+              Gradient Generator
+            </Typography>
+          </Fade>
+        </Box>
+        <Box
+          component="section"
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            margin: '0 auto'
+          }}
+          className={styles.gradientSection}
+        >
+          <Fade left>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+              className={styles.gradientBlock}
+            >
+              {[1, 2, 3, 4, 5, 6].map((el) => {
+                return (
+                  <GradientCard
+                    key={el.toString()}
+                    style={{ margin: "15px" }}
+                    gradient={generateGradient()}
+                  />
+                );
+              })}
+            </Box>
+          </Fade>
+
+          <Fade right>
+            <Box className={styles.description}>
+              <Typography gutterBottom variant={"h4"}>
+                Hello! It is a gradient generator, that can help you to choose a
+                gradient. Here you can make randomly generated gradient to add
+                him in your own project. Сompletely free and extremely
+                convenient
+              </Typography>
+            </Box>
+          </Fade>
+        </Box>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -43,12 +43,11 @@ const Layout: React.FC = ({ children }) => {
     <Theme>
       <div className={cn(styles.container,
         { [styles.container_pc]: checkPC() })}>
-        {router.pathname !== '/' &&
           <IconButton onClick={showDrawer} size='medium'
             edge="start" className={styles.drawerBtn}
             color="inherit" aria-label="menu">
             <MenuIcon />
-          </IconButton>}
+          </IconButton>
         <Drawer variant='temporary'
           classes={{
             paper: styles.drawer
