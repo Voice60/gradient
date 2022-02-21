@@ -1,15 +1,17 @@
 import { Box, IconButton, Typography } from "@material-ui/core";
-import React, { Fragment } from "react";
-import styles from "./gradientCard.module.scss";
 import CloseIcon from "@material-ui/icons/Close";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
-import { getGradientProperty } from "../../utiles/functions";
 import cn from "classnames";
+import React, { Fragment, MouseEventHandler } from "react";
+
+import { getGradientProperty } from "../../utiles/functions";
+import styles from "./gradientCard.module.scss";
 
 interface IGradientCard {
     gradient: string[];
     onCopyGradient?: Function;
     onDeleteGradient?: Function;
+    onClick?: MouseEventHandler<HTMLElement>;
     className?: string
     [restProps: string]: any
 }
@@ -19,6 +21,7 @@ const GradientCard: React.FC<IGradientCard> = ({
     onCopyGradient,
     onDeleteGradient,
     className,
+    onClick,
     ...restProps
 }) => {
     return (
@@ -26,11 +29,16 @@ const GradientCard: React.FC<IGradientCard> = ({
             {...restProps}
             data-testid="gradientCard"
             bgcolor="background.default"
+            onClick={onClick}
             className={cn(className, styles.card)}
+            style={{cursor: onClick ? 'pointer' : 'default'}}
         >
-            <div className={styles.cardTop}>
+            <div className={cn(styles.cardTop, {[styles.cardTopHover]: onClick})}>
                 {onDeleteGradient && <IconButton
-                    onClick={() => onDeleteGradient()}
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        onDeleteGradient()
+                    }}
                     size="small"
                     edge="start"
                     className={styles.cross}
@@ -65,7 +73,10 @@ const GradientCard: React.FC<IGradientCard> = ({
             {onCopyGradient && (
                 <div
                     className={styles.cardBottom}
-                    onClick={() => onCopyGradient()}
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        onCopyGradient()
+                    }}
                 >
                     <Typography
                         className={styles.copyCaption}

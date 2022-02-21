@@ -1,4 +1,4 @@
-import { Gradient } from "../types"
+import { Gradient, GradientsType } from "../types"
 
 export const getGradientProperty = (gradient: string[], opacity = '' as string): string => {
   let grd: string[] = gradient.map(e => '#' + e + opacity)
@@ -26,4 +26,10 @@ export const generateGradient = (): Gradient => {
     newGradient.push(grd)
   }
   return newGradient
+}
+
+export const saveGradientInStorage = (gradient: Gradient): void => {
+    const gradients: GradientsType = JSON.parse(localStorage.gradients ? localStorage.gradients : '[]')
+    gradients.unshift(gradient)
+    localStorage.setItem('gradients', JSON.stringify(gradients))
 }

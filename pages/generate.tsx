@@ -12,7 +12,7 @@ import Layout from '../components/Layout/Layout'
 import SimpleSnackbar from "../components/SnackBar"
 import styles from '../styles/pages/generate.module.scss'
 import { Gradient, GradientsType } from "../types"
-import { copyGradient, getGradientProperty, generateGradient } from "../utiles/functions"
+import { copyGradient, getGradientProperty, generateGradient, saveGradientInStorage } from "../utiles/functions"
 
 const Generate: NextPage = () => {
   const [gradient, setGradient] = useState<Gradient>([])
@@ -21,9 +21,7 @@ const Generate: NextPage = () => {
 
   const saveGradient = (): void => {
     if (gradient.length) {
-      const gradients: GradientsType = JSON.parse(localStorage.gradients ? localStorage.gradients : '[]')
-      gradients.unshift(gradient)
-      localStorage.setItem('gradients', JSON.stringify(gradients))
+      saveGradientInStorage(gradient)
       setIsSaved(true)
     }
   }
