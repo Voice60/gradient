@@ -61,25 +61,30 @@ const GradientCard: React.FC<IGradientCard> = ({
             <Typography className={styles.copyText} variant="subtitle1">
               {`#${grdColor}`}
             </Typography>
-            {gradient.length - 1 !== i && <Typography className={styles.copyText} variant="subtitle1">
-              {'>'}
-            </Typography>}
+            {gradient.length - 1 !== i && (
+              <Typography className={styles.copyText} variant="subtitle1">
+                {">"}
+              </Typography>
+            )}
           </Fragment>
         ))}
       </div>
       {onCopyGradient && (
-        <div
+        <Box
           className={styles.cardBottom}
           onClick={(e) => {
             e.stopPropagation();
             onCopyGradient();
+          }}
+          sx={{
+            bgcolor: "background.paper",
           }}
         >
           <Typography className={styles.copyCaption} variant="subtitle1">
             <FileCopyIcon />
             &nbsp;<p style={{ margin: 0 }}>Copy</p>
           </Typography>
-        </div>
+        </Box>
       )}
     </Box>
   );
