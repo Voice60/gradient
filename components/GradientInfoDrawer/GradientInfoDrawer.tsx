@@ -9,7 +9,8 @@ interface IGradientInfoDrawer {
   isOpen: boolean;
   gradient: Gradient;
   handleClose: () => void;
-  onCopyGradient: (grd: Gradient) => void;
+  onCopyGradient?: (grd: Gradient) => void;
+  onSave?: () => void
 }
 
 const GradientInfoDrawer: React.FC<IGradientInfoDrawer> = ({
@@ -17,6 +18,7 @@ const GradientInfoDrawer: React.FC<IGradientInfoDrawer> = ({
   gradient,
   handleClose,
   onCopyGradient,
+  onSave
 }) => {
   const [currentGradient, setCurrentGradient] = useState<Gradient>(gradient);
   const [isSaved, setIsSaved] = useState(false)
@@ -40,7 +42,7 @@ const GradientInfoDrawer: React.FC<IGradientInfoDrawer> = ({
       <div style={{ paddingBottom: "30px" }}>
         <GradientCard
           gradient={currentGradient}
-          onCopyGradient={() => onCopyGradient(currentGradient)}
+          onCopyGradient={onCopyGradient && (() => {onCopyGradient(currentGradient)})}
         />
       </div>
       <Typography gutterBottom align="center" variant="h5">
@@ -64,9 +66,10 @@ const GradientInfoDrawer: React.FC<IGradientInfoDrawer> = ({
         }}
         value={currentGradient && currentGradient[1]}
       />
-      <Button disabled={isSaved} onClick={() => {
+      <Button className={styles.button} disabled={isSaved} onClick={() => {
         setIsSaved(true)
-        saveGradientInStorage(currentGradient)}} variant="contained">{isSaved ? 'Already saved' : 'Save'}</Button>
+        saveGradientInStorage(currentGradient)
+        onSave && onSave()}} variant="contained">{isSaved ? 'Already saved' : 'Save'}</Button>
     </Drawer>
   );
 };

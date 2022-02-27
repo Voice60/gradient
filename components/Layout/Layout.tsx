@@ -42,7 +42,8 @@ const Layout: React.FC = ({ children }) => {
   return (
     <Theme>
       <div className={cn(styles.container,
-        { [styles.container_pc]: checkPC() })}>
+        { [styles.container_pc]: checkPC() },
+        { [styles.darkSelection]: theme})}>
           <IconButton onClick={showDrawer} size='medium'
             edge="start" className={styles.drawerBtn}
             color="inherit" aria-label="menu">
@@ -101,7 +102,7 @@ const Layout: React.FC = ({ children }) => {
         </Box>
         <Box bgcolor='background.default'>
           <footer className={styles.footer}>
-            <Typography className={styles.author} variant='h5'>
+            <Typography variant='h5'>
               Created by Voice
             </Typography>
           </footer>

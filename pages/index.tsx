@@ -1,15 +1,14 @@
+import { Box, Typography } from "@material-ui/core";
+
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import styles from "../styles/pages/home.module.scss";
-import { useEffect, useState } from "react";
-import Layout from "../components/Layout";
-import cn from "classnames";
-import { Box, Typography } from "@material-ui/core";
+import Image from "next/image";
+import { useState } from "react";
 //@ts-ignore
 import Fade from "react-reveal/Fade";
-import Image from "next/image";
-import GradientCard from "../components/GradientCard";
+import { GradientCard, Layout } from "../components";
+import presets from "../data/presets.json";
+import styles from "../styles/pages/home.module.scss";
 import { generateGradient } from "../utiles/functions";
 interface ILoadElements {
   [key: string]: boolean;
@@ -60,13 +59,13 @@ const Home: NextPage = () => {
           component="section"
           sx={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "column",
             alignItems: "center",
-            margin: '0 auto'
+            bgcolor: "background.default",
           }}
           className={styles.gradientSection}
         >
-          <Fade left>
+          <Fade style={{ width: "100%" }} left>
             <Box
               sx={{
                 display: "flex",
@@ -79,8 +78,8 @@ const Home: NextPage = () => {
               {[1, 2, 3, 4, 5, 6].map((el) => {
                 return (
                   <GradientCard
+                    className={styles.gradient}
                     key={el.toString()}
-                    style={{ margin: "15px" }}
                     gradient={generateGradient()}
                   />
                 );
@@ -90,11 +89,56 @@ const Home: NextPage = () => {
 
           <Fade right>
             <Box className={styles.description}>
-              <Typography gutterBottom variant={"h4"}>
-                Hello! It is a gradient generator, that can help you to choose a
+              <Typography  gutterBottom variant={"h4"}>
+                Generate gradients
+                {/* Hello! It is a gradient generator, that can help you to choose a
                 gradient. Here you can make randomly generated gradient to add
                 him in your own project. Сompletely free and extremely
-                convenient
+                convenient */}
+              </Typography>
+            </Box>
+          </Fade>
+        </Box>
+        <Box
+          component="section"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            bgcolor: "background.paper",
+          }}
+          className={styles.gradientSection}
+        >
+          <Fade style={{ width: "100%" }} left>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+              className={styles.gradientBlock}
+            >
+              {presets.map((el) => {
+                return (
+                  <GradientCard
+                    className={styles.gradient}
+                    key={el.title}
+                    gradient={el.gradients[0]}
+                  />
+                );
+              })}
+            </Box>
+          </Fade>
+
+          <Fade right>
+            <Box className={styles.description}>
+              <Typography gutterBottom variant={"h4"}>
+                Check presets
+                {/* Hello! It is a gradient generator, that can help you to choose a
+                gradient. Here you can make randomly generated gradient to add
+                him in your own project. Сompletely free and extremely
+                convenient */}
               </Typography>
             </Box>
           </Fade>

@@ -31,10 +31,16 @@
       font-size: 1.125rem;
     }
   }
+  .button {
+    @media (max-width: 550px) {
+      justify-content: flex-start;
+    }
 
-  .btnText {
-    @media (max-width: 480px) {
-      display: none;
+    .btnText {
+    @media (max-width: 550px) {
+      // display: none;
     }
   }
+  }
+  
 }

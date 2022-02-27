@@ -1,19 +1,18 @@
 import { Typography } from "@material-ui/core";
-
 import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useState } from "react";
-import GradientCard from "../components/GradientCard";
-import GradientInfoDrawer from "../components/GradientInfoDrawer/GradientInfoDrawer";
-import Layout from "../components/Layout/Layout";
-import SimpleSnackbar from "../components/SnackBar";
+import {
+  GradientInfoDrawer,
+  GradientCard,
+  Layout,
+  SnackBar,
+} from "../components";
 import presets from "../data/presets.json";
 import gradientsList from "../styles/gradientsList.module.scss";
 import utils from "../styles/utils.module.scss";
 import { Gradient } from "../types";
 import { copyGradient } from "../utiles/functions";
-import cn from "classnames";
-import utiles from "../styles/utils.module.scss";
 
 const Generate: NextPage = () => {
   const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false);
@@ -62,7 +61,7 @@ const Generate: NextPage = () => {
           </React.Fragment>
         ))}
       </div>
-      <SimpleSnackbar
+      <SnackBar
         isOpen={isSnackbarOpen}
         setIsOpen={setIsSnackbarOpen}
         message={"Gradient copied"}
