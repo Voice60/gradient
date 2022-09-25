@@ -1,1 +1,1 @@
-export {default} from './GradientCard' 
+export { default } from './GradientCard'

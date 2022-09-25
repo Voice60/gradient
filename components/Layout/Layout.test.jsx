@@ -1,23 +1,19 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react'
 
-import Layout from './index';
+import Layout from './index'
 
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect'
 
-jest.mock('next/router', () => require('next-router-mock'));
+jest.mock('next/router', () => require('next-router-mock'))
 
 describe('Layout component', () => {
   it('Layout renders', () => {
-    render(<Layout>
-      Layout test
-    </Layout>)
+    render(<Layout>Layout test</Layout>)
 
     expect(screen.getByText('Layout test')).toBeInTheDocument()
   })
   it('Drawer button works', () => {
-    render(<Layout>
-      Layout test
-    </Layout>)
+    render(<Layout>Layout test</Layout>)
 
     const button = screen.getByLabelText('menu')
     button.click()
@@ -27,9 +23,7 @@ describe('Layout component', () => {
     expect(screen.getByText('Dark theme')).toBeInTheDocument()
   })
   it('Switch theme button works', () => {
-    render(<Layout>
-      Layout test
-    </Layout>)
+    render(<Layout>Layout test</Layout>)
 
     const button = screen.getByLabelText('menu')
     button.click()
@@ -39,5 +33,4 @@ describe('Layout component', () => {
     screen.getByRole('checkbox').click()
     expect(localStorage.darkTheme).toBe('false')
   })
-
 })

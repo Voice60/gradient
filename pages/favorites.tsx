@@ -1,46 +1,47 @@
-import { Typography } from "@material-ui/core";
-import type { NextPage } from "next";
-import Head from "next/head";
-import { useEffect, useState } from "react";
+import { Typography } from '@material-ui/core'
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import { useEffect, useState } from 'react'
 import {
   GradientCard,
   GradientInfoDrawer,
   Layout,
-  SnackBar,
-} from "../components";
-import gradientsList from "../styles/gradientsList.module.scss";
-import styles from "../styles/pages/favorites.module.scss";
-import utils from "../styles/utils.module.scss";
-import { Gradient, GradientsType } from "../types";
-import { copyGradient } from "../utiles/functions";
+  SnackBar
+} from '../components'
+import gradientsList from '../styles/gradientsList.module.scss'
+import styles from '../styles/pages/favorites.module.scss'
+import utils from '../styles/utils.module.scss'
+import { Gradient, GradientsType } from '../types'
+import { copyGradient } from '../utiles/functions'
 
 const Favorites: NextPage = () => {
-  const [gradients, setGradients] = useState<GradientsType>([]);
-  const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false);
-  const [currentGradient, setCurrentGradient] = useState<null | Gradient>(null);
+  const [gradients, setGradients] = useState<GradientsType>([])
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false)
+  const [currentGradient, setCurrentGradient] = useState<null | Gradient>(null)
   const [isOpenGradientDrawer, setIsOpenGradientDrawer] =
-    useState<boolean>(false);
+    useState<boolean>(false)
+
   useEffect(() => {
-    requestGradients();
-  }, []);
+    requestGradients()
+  }, [])
 
   const requestGradients = () => {
     setGradients(
       localStorage.gradients ? JSON.parse(localStorage.gradients) : []
-    );
-  };
+    )
+  }
 
   const deleteGradient = (index: number): void => {
-    let newGradients = [...gradients];
-    newGradients.splice(index, 1);
-    localStorage.setItem("gradients", JSON.stringify(newGradients));
-    setGradients(newGradients);
-  };
+    let newGradients = [...gradients]
+    newGradients.splice(index, 1)
+    localStorage.setItem('gradients', JSON.stringify(newGradients))
+    setGradients(newGradients)
+  }
 
   const copyGradientWithAlert = (grd: Gradient): void => {
-    copyGradient(grd);
-    setIsSnackbarOpen(true);
-  };
+    copyGradient(grd)
+    setIsSnackbarOpen(true)
+  }
 
   return (
     <Layout>
@@ -49,9 +50,9 @@ const Favorites: NextPage = () => {
       </Head>
       <div className={utils.wrapper}>
         <Typography
-          align="center"
+          align='center'
           className={utils.title}
-          variant="h3"
+          variant='h3'
           gutterBottom
         >
           Favorites
@@ -61,8 +62,8 @@ const Favorites: NextPage = () => {
             {gradients.map((gradient, index) => (
               <GradientCard
                 onClick={() => {
-                  setIsOpenGradientDrawer(true);
-                  setCurrentGradient(gradient);
+                  setIsOpenGradientDrawer(true)
+                  setCurrentGradient(gradient)
                 }}
                 key={index}
                 className={gradientsList.card}
@@ -74,9 +75,9 @@ const Favorites: NextPage = () => {
           </div>
         ) : (
           <Typography
-            align="center"
+            align='center'
             className={styles.title}
-            variant="h5"
+            variant='h5'
             gutterBottom
           >
             There is no saved gradients yet
@@ -86,7 +87,7 @@ const Favorites: NextPage = () => {
       <SnackBar
         isOpen={isSnackbarOpen}
         setIsOpen={setIsSnackbarOpen}
-        message={"Gradient copied"}
+        message={'Gradient copied'}
       />
       <GradientInfoDrawer
         onSave={requestGradients}
@@ -96,7 +97,7 @@ const Favorites: NextPage = () => {
         onCopyGradient={(grd) => copyGradientWithAlert(grd)}
       />
     </Layout>
-  );
-};
+  )
+}
 
-export default Favorites;
+export default Favorites

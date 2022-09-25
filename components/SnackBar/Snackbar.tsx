@@ -1,5 +1,5 @@
-import Snackbar, { SnackbarCloseReason } from '@material-ui/core/Snackbar';
-import React, { SyntheticEvent } from 'react';
+import Snackbar, { SnackbarCloseReason } from '@material-ui/core/Snackbar'
+import React, { SyntheticEvent } from 'react'
 
 interface ISimpleSnackbar {
   isOpen: boolean
@@ -7,21 +7,28 @@ interface ISimpleSnackbar {
   message: string
 }
 
-const SimpleSnackbar: React.FC<ISimpleSnackbar> = ({isOpen, setIsOpen, message}) => {
-  const handleClose = (event: SyntheticEvent<any, Event>, reason: SnackbarCloseReason): void => {
+const SimpleSnackbar: React.FC<ISimpleSnackbar> = ({
+  isOpen,
+  setIsOpen,
+  message
+}) => {
+  const handleClose = (
+    event: SyntheticEvent<any, Event>,
+    reason: SnackbarCloseReason
+  ): void => {
     if (reason === 'clickaway') {
-      return;
+      return
     }
 
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
 
   return (
     <div>
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center',
+          horizontal: 'center'
         }}
         open={isOpen}
         autoHideDuration={1500}
@@ -29,6 +36,6 @@ const SimpleSnackbar: React.FC<ISimpleSnackbar> = ({isOpen, setIsOpen, message})
         message={message}
       />
     </div>
-  );
-};
+  )
+}
 export default SimpleSnackbar

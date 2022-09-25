@@ -1,1 +1,1 @@
-export {default} from './GradientInfoDrawer'
+export { default } from './GradientInfoDrawer'

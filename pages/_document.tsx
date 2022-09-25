@@ -1,14 +1,17 @@
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import { ServerStyleSheets } from '@material-ui/core/styles'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
-import React from 'react';
+import React from 'react'
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html>
         <Head>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-          <link rel="shortcut icon" href="/favicon.ico" />
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+          />
+          <link rel='shortcut icon' href='/favicon.ico' />
         </Head>
         <body>
           <Main />
@@ -20,18 +23,21 @@ export default class MyDocument extends Document {
 }
 
 MyDocument.getInitialProps = async (ctx) => {
-  const sheets = new ServerStyleSheets();
-  const originalRenderPage = ctx.renderPage;
+  const sheets = new ServerStyleSheets()
+  const originalRenderPage = ctx.renderPage
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
-    });
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />)
+    })
 
-  const initialProps = await Document.getInitialProps(ctx);
+  const initialProps = await Document.getInitialProps(ctx)
 
   return {
     ...initialProps,
-    styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
-  };
-};
+    styles: [
+      ...React.Children.toArray(initialProps.styles),
+      sheets.getStyleElement()
+    ]
+  }
+}
